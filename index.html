@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J.buhs – Historier fra virkeligheten</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>J.buhs</h1>
+    <p>Del dine merkelige, morsomme eller uheldige historier!</p>
+  </header>
+
+  <main class="content">
+    <!-- Seksjon for eksisterende historier -->
+    <section id="stories" class="story-list">
+      <!-- Eksempel på en historie -->
+      <article class="story">
+        <h2 class="story-title">Eksempel-hendelse #1</h2>
+        <p class="story-text">
+          Skulle bare ta bussen, men glemte både lommeboka og å trekke i brekket…
+        </p>
+        <p class="story-meta">Postet av Anonym, 27.01.2025</p>
+      </article>
+
+      <!-- Flere historier kan ligge her, generert fra server eller JavaScript -->
+    </section>
+
+    <!-- Skjema for å poste nye historier -->
+    <section class="submit-section">
+      <h2>Send inn din historie</h2>
+      <form id="storyForm">
+        <div>
+          <label for="title">Tittel:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+        <div>
+          <label for="story">Historie:</label>
+          <textarea id="story" name="story" rows="5" required></textarea>
+        </div>
+        <div>
+          <label for="author">Navn/alias (valgfritt):</label>
+          <input type="text" id="author" name="author" />
+        </div>
+        <button type="submit">Post historie</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 J.buhs. Alle rettigheter forbeholdt.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
