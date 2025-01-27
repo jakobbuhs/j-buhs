@@ -1,64 +1,110 @@
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   // Theme toggle
   const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = themeToggle.querySelector('i');
 
-  themeToggle?.addEventListener('click', () => {
+  themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    themeIcon.classList.toggle('fa-sun');
+    themeIcon.classList.toggle('fa-moon');
+
+    // Save theme preference to localStorage
+    const isDarkMode = document.body.classList.contains('dark');
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
   });
 
-  // Preserve theme across sessions
+  // Initialize theme based on system preference or localStorage
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
     document.body.classList.add('dark');
+    themeIcon.classList.replace('fa-sun', 'fa-moon');
   }
 
-  // Smooth scroll for navigation
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
     });
   });
 
-  // Dynamic project videos
-  const projectCards = document.querySelectorAll('.project-card video');
-  projectCards.forEach(video => {
-    video.addEventListener('mouseenter', () => video.play());
-    video.addEventListener('mouseleave', () => video.pause());
+  // Chat widget functionality
+  const chatToggle = document.getElementById('chatToggle');
+  const chatClose = document.getElementById('chatClose');
+  const chatContainer = document.getElementById('chatContainer');
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+  const chatMessages = document.getElementById('chatMessages');
+
+  function toggleChat() {
+    chatContainer.classList.toggle('hidden');
+    chatToggle.classList.toggle('hidden');
+  }
+
+  chatToggle.addEventListener('click', toggleChat);
+  chatClose.addEventListener('click', toggleChat);
+
+  function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}`;
+    messageDiv.innerHTML = `
+      <div class="message-content">
+        <p>${text}</p>
+        <span class="message-time">${new Date().toLocaleTimeString()}</span>
+      </div>
+    `;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  chatForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    addMessage(message, 'user');
+    chatInput.value = '';
+
+    // Simulate a response from the system
+    setTimeout(() => {
+      addMessage('Takk for meldingen din! Vi vil svare så snart som mulig.', 'system');
+    }, 1000);
   });
 
-  // Consultation button handler
-  const consultationButton = document.querySelector('.btn-primary[href="#consultation"]');
-  consultationButton?.addEventListener('click', () => {
-    alert('Takk for interessen! Vi kontakter deg snart for en gratis konsultasjon.');
+  // Form submission handling (for story submission)
+  const storyForm = document.getElementById('storyForm');
+  const storiesSection = document.getElementById('stories');
+
+  storyForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const story = document.getElementById('story').value;
+    const author = document.getElementById('author').value || 'Anonym';
+
+    const newStory = document.createElement('article');
+    newStory.className = 'story';
+    newStory.innerHTML = `
+      <h2 class="story-title">${title}</h2>
+      <p class="story-text">${story}</p>
+      <p class="story-meta">Postet av ${author}, ${new Date().toLocaleDateString('no-NO')}</p>
+    `;
+
+    storiesSection.insertBefore(newStory, storiesSection.firstChild);
+    storyForm.reset();
   });
 
-  // Contact form submission (mockup)
-  const contactForm = document.getElementById('contactForm');
-  contactForm?.addEventListener('submit', event => {
-    event.preventDefault();
-    const formData = new FormData(contactForm);
-    console.log('Form submitted:', Object.fromEntries(formData));
-    alert('Takk! Din melding er sendt.');
-    contactForm.reset();
-  });
+  // Mobile menu toggle (if needed)
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
 
-  // Animate elements on scroll
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
 });
