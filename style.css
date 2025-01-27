@@ -1,0 +1,103 @@
+/* Reset/grunnleggende */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.5;
+}
+
+.site-header,
+.site-footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.site-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.site-header p {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.story-list {
+  margin-bottom: 3rem;
+}
+
+.story {
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.story-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.story-text {
+  margin-bottom: 0.5rem;
+}
+
+.story-meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.submit-section {
+  background: #fff;
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.submit-section h2 {
+  margin-bottom: 1rem;
+}
+
+#storyForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+#storyForm input[type="text"],
+#storyForm textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+#storyForm button {
+  background-color: #222;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+}
+
+.site-footer {
+  margin-top: 3rem;
+}
