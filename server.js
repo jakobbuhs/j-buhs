@@ -1,35 +1,26 @@
+require("dotenv").config(); // Last inn miljøvariabler fra .env
 const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
-const cors = require("cors"); // Importer CORS
 
 const app = express();
 
-app.use(cors()); // Aktiver CORS for alle forespørsler
 app.use(bodyParser.json());
 
-// Rot-endepunkt for testing
-app.get("/", (req, res) => {
-    res.send("Serveren kjører! Du kan sende e-post via /send-email.");
-});
-
-// Endepunkt for å sende e-post
 app.post("/send-email", async (req, res) => {
     const { name, email, message } = req.body;
 
     const transporter = nodemailer.createTransport({
-        host: "smtp.office365.com",
-        port: 587,
-        secure: false, // Bruk STARTTLS
+        service: "gmail",
         auth: {
-            user: "jakob@buhs.no", // Din Outlook-e-post
-            pass: "Skispor4421", // Ditt Outlook-passord eller app-passord
+            user: process.env.GMAIL_USER, // Fra .env
+            pass: process.env.GMAIL_PASS, // Fra .env
         },
     });
 
     const mailOptions = {
         from: `"${name}" <${email}>`,
-        to: "jakob@buhs.no", // Din Outlook-e-post
+        to: process.env.GMAIL_USER,
         subject: "Ny kundehenvendelse",
         text: `Du har mottatt en melding fra ${name} (${email}):\n\n${message}`,
     };
@@ -43,7 +34,6 @@ app.post("/send-email", async (req, res) => {
     }
 });
 
-// Start serveren
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server kjører på http://localhost:${PORT}`);
