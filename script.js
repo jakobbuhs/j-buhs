@@ -9,7 +9,7 @@ function toggleContactPopup() {
 }
 
 
-// Event listener for skjema
+// Event listener for skjema 12324
 document.getElementById("contact-form").addEventListener("submit", async function (event) {
   event.preventDefault();
 
