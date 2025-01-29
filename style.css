@@ -120,6 +120,33 @@ h1, h2 {
   line-height: 1.8;
   color: #fff;
 }
+.portfolio-item {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.portfolio-item h3 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.portfolio-item p {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.portfolio-item video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+
 
 /* Pop-up stiler */
 /* Popup */
@@ -215,6 +242,21 @@ h1, h2 {
 
 .popup-content button:hover {
   background: #334ba1;
+}
+.footer {
+  background: linear-gradient(to right, #1e293b, #334ba1);
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 1rem;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 

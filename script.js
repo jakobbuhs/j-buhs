@@ -16,7 +16,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
-
+ 
   try {
       const response = await fetch("http://localhost:3000/send-email", {
           method: "POST",
@@ -33,4 +33,15 @@ document.getElementById("contact-form").addEventListener("submit", async functio
       console.error("En feil oppstod:", error);
       alert("En feil oppstod. Vennligst prøv igjen.");
   }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.getElementById("portfolio-video");
+
+  video.addEventListener("click", function () {
+      if (video.paused) {
+          video.play();
+      } else {
+          video.pause();
+      }
+  });
 });
