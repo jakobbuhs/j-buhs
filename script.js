@@ -16,9 +16,9 @@ document.getElementById("contact-form").addEventListener("submit", async functio
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
- 
+
   try {
-      const response = await fetch("http://localhost:3000/send-email", {
+      const response = await fetch("https://j-buhs-9osgeujkn-jakob-buhs-projects.vercel.app/api/sendEmail", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, message }),
@@ -34,6 +34,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
       alert("En feil oppstod. Vennligst prøv igjen.");
   }
 });
+
 document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("portfolio-video");
 
