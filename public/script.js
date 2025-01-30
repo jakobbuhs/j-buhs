@@ -19,6 +19,9 @@ function scrollToSection(sectionId) {
         message: document.getElementById("message").value
     };
 
+
+
+
     try {
         const response = await fetch("https://j-buhs-62ue9r1fy-jakob-buhs-projects.vercel.app/api/sendEmail", {
             method: "POST",
