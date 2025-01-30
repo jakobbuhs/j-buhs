@@ -1,56 +1,10 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
-import Script from 'next/script';
 
 export default function Home() {
   useEffect(() => {
-    // Check if we're on the client-side
     if (typeof window !== 'undefined') {
-      // Form handling
-      const form = document.getElementById("contact-form");
-      if (form) {
-        form.addEventListener("submit", async function (event) {
-          event.preventDefault();
-          const submitButton = this.querySelector('button[type="submit"]');
-          submitButton.disabled = true;
-
-          try {
-              const formData = {
-                  name: document.getElementById("name").value,
-                  email: document.getElementById("email").value,
-                  company: document.getElementById("company").value,
-                  message: document.getElementById("message").value
-              };
-          
-              console.log('Sending form data:', formData);
-          
-              const response = await fetch('/api/sendEmail', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify(formData)
-              });
-          
-              const data = await response.json();
-              console.log('Response:', data);
-          
-              if (response.ok) {
-                  alert('Takk for din melding! Vi kontakter deg snart.');
-                  this.reset();
-              } else {
-                  throw new Error(data.message || 'Sending failed: ' + data.error);
-              }
-          } catch (error) {
-              console.error('Error details:', error);
-              alert('Det oppstod en feil ved sending av skjemaet: ' + error.message);
-          } finally {
-              submitButton.disabled = false;
-          }
-        });
-      }
-
-      // Scroll and popup functions
+      // Define functions inside useEffect to avoid SSR issues
       window.scrollToSection = (sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -65,7 +19,7 @@ export default function Home() {
         }
       };
     }
-  }, []);
+  }, []); // Run only on client side
 
   return (
     <>
@@ -80,10 +34,10 @@ export default function Home() {
           <h1 className="logo">J.BUHS</h1>
           <nav>
             <ul>
-              <li><button onClick={() => window.scrollToSection('home')}>Hjem</button></li>
-              <li><button onClick={() => window.scrollToSection('why')}>Hvorfor J.BUHS</button></li>
-              <li><button onClick={() => window.scrollToSection('portfolio')}>Portefølje</button></li>
-              <li><button onClick={window.toggleContactPopup}>Kontakt oss</button></li>
+              <li><button onClick={() => window.scrollToSection?.('home')}>Hjem</button></li>
+              <li><button onClick={() => window.scrollToSection?.('why')}>Hvorfor J.BUHS</button></li>
+              <li><button onClick={() => window.scrollToSection?.('portfolio')}>Portefølje</button></li>
+              <li><button onClick={() => window.toggleContactPopup?.()}>Kontakt oss</button></li>
             </ul>
           </nav>
         </div>
@@ -100,24 +54,24 @@ export default function Home() {
 
         <section id="why" className="section why">
           <h2>Hvorfor velge oss?</h2>
-          <p>Vi leverer skreddersydde, gjennomførte og automatiserende løsnigner slik at du kan fokusere på det viktigste. 
-            Alt vi gjør blir gjort etter kunders behov og ønsker. 
-            Vi har lang erfaring og kan hjelpe deg med alt fra nettsider til automatisering av prosesser. 
-            Vi har også et stort fokus på sikkerhet og personvern slik at du kan være trygg på at dine data er i trygge hender. 
+          <p>Vi leverer skreddersydde, gjennomførte og automatiserende løsninger slik at du kan fokusere på det viktigste.
+            Alt vi gjør blir gjort etter kunders behov og ønsker.
+            Vi har lang erfaring og kan hjelpe deg med alt fra nettsider til automatisering av prosesser.
+            Vi har også et stort fokus på sikkerhet og personvern slik at du kan være trygg på at dine data er i trygge hender.
             Ta kontakt for en uforpliktende prat om hva vi kan hjelpe deg med.
-            Videre har vi god erfaring med bedriftuvikling og har tidligere hjulpet bedrifter fra nok 30Millioner i omsetning til over 140Millioner i omsetning.
+            Videre har vi god erfaring med bedriftutvikling og har tidligere hjulpet bedrifter fra NOK 30 millioner i omsetning til over NOK 140 millioner i omsetning.
           </p>
         </section>
 
         <section id="portfolio" className="section portfolio">
           <h2>Portefølje</h2>
           <p>Se våre tidligere prosjekter og hva vi kan tilby.</p>
-        
+
           <div className="portfolio-item">
             <h3>Gmail Automatisering</h3>
             <p>
               Denne løsningen bruker AI for å automatisere svar på e-poster, noe som kan redusere tiden brukt på kundekontakt med opptil <strong>95%</strong>.
-              Dette gir mer effektiv kundehåndtering og raskere responstider. 
+              Dette gir mer effektiv kundehåndtering og raskere responstider.
             </p>
             <video id="portfolio-video" autoPlay loop muted>
               <source src="/Skjermopptak 2025-01-29 kl. 07.49.31.mp4" type="video/mp4" />
@@ -129,7 +83,7 @@ export default function Home() {
 
       <div id="contact-popup" className="popup hidden">
         <div className="popup-content">
-          <button className="close-popup" onClick={window.toggleContactPopup}>×</button>
+          <button className="close-popup" onClick={() => window.toggleContactPopup?.()}>×</button>
           <h2>Kontakt oss</h2>
           <form id="contact-form">
             <label htmlFor="name">Navn:</label>
