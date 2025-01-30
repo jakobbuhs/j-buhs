@@ -1,30 +1,22 @@
 import nodemailer from 'nodemailer';
-import cors from 'cors';
-
-// Configure CORS middleware
-const corsMiddleware = cors({
-  origin: ['https://jbuhs.no', 'http://localhost:3000'], // Add your frontend domains
-  methods: ['POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
-  credentials: true,
-});
 
 export default async function handler(req, res) {
-    // Handle CORS
-    await new Promise((resolve, reject) => {
-        corsMiddleware(req, res, (result) => {
-            if (result instanceof Error) {
-                return reject(result);
-            }
-            return resolve(result);
-        });
-    });
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', 'https://jbuhs.no');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    );
 
-    // Handle preflight requests
+    // Handle preflight request
     if (req.method === 'OPTIONS') {
-        return res.status(200).end();
+        res.status(200).end();
+        return;
     }
 
+    // Only allow POST
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method not allowed' });
     }
@@ -32,7 +24,7 @@ export default async function handler(req, res) {
     try {
         const { name, email, company, message } = req.body;
         
-        // Create transporter using GoDaddy SMTP settings
+        // Create transporter
         const transporter = nodemailer.createTransport({
             host: 'smtpout.secureserver.net',
             port: 465,
@@ -65,9 +57,9 @@ export default async function handler(req, res) {
             `,
         });
         
-        res.status(200).json({ message: 'Email sent successfully' });
+        res.status(200).json({ success: true, message: 'Email sent successfully' });
     } catch (error) {
         console.error('Error sending email:', error);
-        res.status(500).json({ message: 'Error sending email' });
+        res.status(500).json({ success: false, message: 'Error sending email' });
     }
 }

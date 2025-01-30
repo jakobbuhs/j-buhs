@@ -12,35 +12,38 @@ function scrollToSection(sectionId) {
   document.getElementById("contact-form").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const company = document.getElementById("company").value;
-    const message = document.getElementById("message").value;
+    const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        company: document.getElementById("company").value,
+        message: document.getElementById("message").value
+    };
 
     try {
         const response = await fetch("https://j-buhs-62ue9r1fy-jakob-buhs-projects.vercel.app/api/sendEmail", {
             method: "POST",
-            headers: { 
-                "Content-Type": "application/json"
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
-            credentials: "include",
-            body: JSON.stringify({ name, email, company, message }),
+            body: JSON.stringify(formData)
         });
 
         if (response.ok) {
+            const result = await response.json();
             alert("Takk for din melding! Vi kontakter deg snart.");
-            this.reset(); // Reset the form after successful submission
+            this.reset();
         } else {
             const errorData = await response.json();
-            console.error("Feil under sending:", errorData);
-            alert("Feil under sending av e-post. Prøv igjen senere.");
+            console.error("Server Error:", errorData);
+            alert("Beklager, det oppstod en feil. Vennligst prøv igjen senere.");
         }
     } catch (error) {
-        console.error("En feil oppstod:", error);
-        alert("En feil oppstod. Vennligst prøv igjen.");
+        console.error("Network Error:", error);
+        alert("Kunne ikke koble til serveren. Sjekk internettforbindelsen din og prøv igjen.");
     }
 });
-  
+
   document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById("portfolio-video");
   
