@@ -12,38 +12,43 @@ function scrollToSection(sectionId) {
   document.getElementById("contact-form").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const formData = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        company: document.getElementById("company").value,
-        message: document.getElementById("message").value
-    };
-
-
-
+    const submitButton = this.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
 
     try {
-        const response = await fetch("https://j-buhs-62ue9r1fy-jakob-buhs-projects.vercel.app/api/sendEmail", {
-            method: "POST",
+        const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            company: document.getElementById("company").value,
+            message: document.getElementById("message").value
+        };
+
+        const response = await fetch('https://j-buhs-62ue9r1fy-jakob-buhs-projects.vercel.app/api/sendEmail', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
         });
 
         if (response.ok) {
             const result = await response.json();
-            alert("Takk for din melding! Vi kontakter deg snart.");
-            this.reset();
+            if (result.success) {
+                alert('Takk for din melding! Vi kontakter deg snart.');
+                this.reset();
+            } else {
+                throw new Error('Sending feilet');
+            }
         } else {
-            const errorData = await response.json();
-            console.error("Server Error:", errorData);
-            alert("Beklager, det oppstod en feil. Vennligst prøv igjen senere.");
+            const error = await response.json();
+            throw new Error(error.error || 'Sending feilet');
         }
     } catch (error) {
-        console.error("Network Error:", error);
-        alert("Kunne ikke koble til serveren. Sjekk internettforbindelsen din og prøv igjen.");
+        console.error('Error:', error);
+        alert('Det oppstod en feil ved sending av skjemaet. Vennligst prøv igjen senere.');
+    } finally {
+        submitButton.disabled = false;
     }
 });
 

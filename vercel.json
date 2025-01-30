@@ -1,13 +1,14 @@
 {
-    "headers": [
+    "version": 2,
+    "routes": [
       {
-        "source": "/api/(.*)",
-        "headers": [
-          { "key": "Access-Control-Allow-Credentials", "value": "true" },
-          { "key": "Access-Control-Allow-Origin", "value": "https://jbuhs.no" },
-          { "key": "Access-Control-Allow-Methods", "value": "GET,DELETE,PATCH,POST,PUT,OPTIONS" },
-          { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" }
-        ]
+        "src": "/api/sendEmail",
+        "methods": ["POST", "OPTIONS"],
+        "headers": {
+          "Access-Control-Allow-Origin": "https://jbuhs.no",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Accept"
+        }
       }
     ]
   }
