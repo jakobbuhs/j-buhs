@@ -1,72 +1,78 @@
-import Head from 'next/head';
 import { useEffect } from 'react';
+import Head from 'next/head';
+import Script from 'next/script';
 
 export default function Home() {
   useEffect(() => {
-    // Form handling
-    const form = document.getElementById("contact-form");
-    if (form) {
-      form.addEventListener("submit", async function (event) {
-        event.preventDefault();
-        const submitButton = this.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
+    // Check if we're on the client-side
+    if (typeof window !== 'undefined') {
+      // Form handling
+      const form = document.getElementById("contact-form");
+      if (form) {
+        form.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          const submitButton = this.querySelector('button[type="submit"]');
+          submitButton.disabled = true;
 
-        try {
-            const formData = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                company: document.getElementById("company").value,
-                message: document.getElementById("message").value
-            };
-        
-            console.log('Sending form data:', formData);
-        
-            const response = await fetch('/api/sendEmail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-        
-            const data = await response.json();
-            console.log('Response:', data);
-        
-            if (response.ok) {
-                alert('Takk for din melding! Vi kontakter deg snart.');
-                this.reset();
-            } else {
-                throw new Error(data.message || 'Sending failed: ' + data.error);
-            }
-        } catch (error) {
-            console.error('Error details:', error);
-            alert('Det oppstod en feil ved sending av skjemaet: ' + error.message);
-        } finally {
-            submitButton.disabled = false;
+          try {
+              const formData = {
+                  name: document.getElementById("name").value,
+                  email: document.getElementById("email").value,
+                  company: document.getElementById("company").value,
+                  message: document.getElementById("message").value
+              };
+          
+              console.log('Sending form data:', formData);
+          
+              const response = await fetch('/api/sendEmail', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(formData)
+              });
+          
+              const data = await response.json();
+              console.log('Response:', data);
+          
+              if (response.ok) {
+                  alert('Takk for din melding! Vi kontakter deg snart.');
+                  this.reset();
+              } else {
+                  throw new Error(data.message || 'Sending failed: ' + data.error);
+              }
+          } catch (error) {
+              console.error('Error details:', error);
+              alert('Det oppstod en feil ved sending av skjemaet: ' + error.message);
+          } finally {
+              submitButton.disabled = false;
+          }
+        });
+      }
+
+      // Scroll and popup functions
+      window.scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
         }
-      });
+      };
+
+      window.toggleContactPopup = () => {
+        const popup = document.getElementById('contact-popup');
+        if (popup) {
+          popup.classList.toggle('hidden');
+        }
+      };
     }
   }, []);
-
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const toggleContactPopup = () => {
-    const popup = document.getElementById('contact-popup');
-    if (popup) {
-      popup.classList.toggle('hidden');
-    }
-  };
 
   return (
     <>
       <Head>
         <title>J.BUHS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header className="navbar">
@@ -74,10 +80,10 @@ export default function Home() {
           <h1 className="logo">J.BUHS</h1>
           <nav>
             <ul>
-              <li><button onClick={() => scrollToSection('home')}>Hjem</button></li>
-              <li><button onClick={() => scrollToSection('why')}>Hvorfor J.BUHS</button></li>
-              <li><button onClick={() => scrollToSection('portfolio')}>Portefølje</button></li>
-              <li><button onClick={toggleContactPopup}>Kontakt oss</button></li>
+              <li><button onClick={() => window.scrollToSection('home')}>Hjem</button></li>
+              <li><button onClick={() => window.scrollToSection('why')}>Hvorfor J.BUHS</button></li>
+              <li><button onClick={() => window.scrollToSection('portfolio')}>Portefølje</button></li>
+              <li><button onClick={window.toggleContactPopup}>Kontakt oss</button></li>
             </ul>
           </nav>
         </div>
@@ -123,7 +129,7 @@ export default function Home() {
 
       <div id="contact-popup" className="popup hidden">
         <div className="popup-content">
-          <button className="close-popup" onClick={toggleContactPopup}>×</button>
+          <button className="close-popup" onClick={window.toggleContactPopup}>×</button>
           <h2>Kontakt oss</h2>
           <form id="contact-form">
             <label htmlFor="name">Navn:</label>
