@@ -133,6 +133,19 @@ export default function Home() {
               Nettleseren din støtter ikke videoavspilling.
             </video>
           </div>
+          <div class="container">
+        <h1>AI Produktbeskrivelse Generator</h1>
+        
+        <div class="portfolio-item" >
+        <h2>Produktbeskrivelse Generator</h2>
+        <p>Vår AI-drevne produktbeskrivelse generator hjelper deg med å lage profesjonelle, SEO-optimaliserte beskrivelser på sekunder. Perfekt for nettbutikker og markedsførere!</p>
+            <video controls autoPlay loop muted>
+                <source src="/Skjermopptak%202025-01-31%20kl.%2021.25.27.mp4" type="video/mp4"/>
+                Your browser does not support the video tag.
+            </video>
+            
+        </div>
+    </div>
         </section>
       </main>
 
@@ -163,7 +176,7 @@ export default function Home() {
 
       <footer className="footer">
         <div className="container">
-          <p>© 2025 J.BUHS | Org.nr: 934 868 943 | All rights reserved</p>
+          <p>© 2025 J.BUHS | Org.nr: 934 868 943 | Kontakt: Jakob Buhs, TLF: 95498228 Epost: jakob@jbuhs.no | All rights reserved</p>
         </div>
       </footer>
     </>

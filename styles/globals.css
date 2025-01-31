@@ -14,6 +14,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    
   }
   
   .navbar {
@@ -27,15 +28,18 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
   
   .navbar .logo {
     font-size: 1.8rem;
     font-weight: bold;
     color: #fff;
-    margin-right: auto;
+
   }
-  
+  .navbar nav {
+    display: flex;
+  }
   .navbar nav ul {
     list-style: none;
     display: flex;
@@ -272,3 +276,26 @@ body {
     color: #721c24;
     border: 1px solid #f5c6cb;
   }
+  .portfolio-item {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.portfolio-item video {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.portfolio-item h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--text-primary);
+}
+
+.portfolio-item p {
+    color: var(--text-secondary);
+}
