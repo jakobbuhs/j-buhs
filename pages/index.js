@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
 export default function Home() {
+  const [formStatus, setFormStatus] = useState({
+    submitting: false,
+    message: '',
+    isError: false
+  });
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Define functions inside useEffect to avoid SSR issues
       window.scrollToSection = (sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -19,7 +24,57 @@ export default function Home() {
         }
       };
     }
-  }, []); // Run only on client side
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus({ submitting: true, message: '', isError: false });
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      company: e.target.company.value,
+      message: e.target.message.value
+    };
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Error sending email');
+      }
+
+      setFormStatus({
+        submitting: false,
+        message: 'Melding sendt! Vi tar kontakt snart.',
+        isError: false
+      });
+      
+      // Clear form
+      e.target.reset();
+      
+      // Close popup after 3 seconds
+      setTimeout(() => {
+        window.toggleContactPopup?.();
+        setFormStatus({ submitting: false, message: '', isError: false });
+      }, 3000);
+
+    } catch (error) {
+      setFormStatus({
+        submitting: false,
+        message: 'Beklager, noe gikk galt. Vennligst prøv igjen.',
+        isError: true
+      });
+    }
+  };
 
   return (
     <>
@@ -85,7 +140,7 @@ export default function Home() {
         <div className="popup-content">
           <button className="close-popup" onClick={() => window.toggleContactPopup?.()}>×</button>
           <h2>Kontakt oss</h2>
-          <form id="contact-form">
+          <form id="contact-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Navn:</label>
             <input type="text" id="name" name="name" required />
             <label htmlFor="email">E-post:</label>
@@ -94,7 +149,14 @@ export default function Home() {
             <input type="text" id="company" name="company" />
             <label htmlFor="message">Melding:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
-            <button type="submit">Send</button>
+            <button type="submit" disabled={formStatus.submitting}>
+              {formStatus.submitting ? 'Sender...' : 'Send'}
+            </button>
+            {formStatus.message && (
+              <div className={`form-message ${formStatus.isError ? 'error' : 'success'}`}>
+                {formStatus.message}
+              </div>
+            )}
           </form>
         </div>
       </div>
