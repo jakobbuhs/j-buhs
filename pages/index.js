@@ -119,34 +119,41 @@ export default function Home() {
         </section>
 
         <section id="portfolio" className="section portfolio">
-          <h2>Portefølje</h2>
-          <p>Se våre tidligere prosjekter og hva vi kan tilby.</p>
+  <h2>Portefølje</h2>
+  <p>Se våre tidligere prosjekter og hva vi kan tilby.</p>
 
-          <div className="portfolio-item">
-            <h3>Gmail Automatisering</h3>
-            <p>
-              Denne løsningen bruker AI for å automatisere svar på e-poster, noe som kan redusere tiden brukt på kundekontakt med opptil <strong>95%</strong>.
-              Dette gir mer effektiv kundehåndtering og raskere responstider.
-            </p>
-            <video id="portfolio-video" autoPlay loop muted>
-              <source src="/Skjermopptak 2025-01-29 kl. 07.49.31.mp4" type="video/mp4" />
-              Nettleseren din støtter ikke videoavspilling.
-            </video>
-          </div>
-          <div class="container">
-        <h1>AI Produktbeskrivelse Generator</h1>
-        
-        <div class="portfolio-item" >
-        <h2>Produktbeskrivelse Generator</h2>
-        <p>Vår AI-drevne produktbeskrivelse generator hjelper deg med å lage profesjonelle, SEO-optimaliserte beskrivelser på sekunder. Perfekt for nettbutikker og markedsførere!</p>
-            <video controls autoPlay loop muted>
-                <source src="/Skjermopptak%202025-01-31%20kl.%2021.25.27.mp4" type="video/mp4"/>
-                Your browser does not support the video tag.
-            </video>
-            
-        </div>
+  <div className="portfolio-item">
+    <div className="video-container">
+      <video autoPlay loop muted>
+        <source src="/Skjermopptak 2025-01-29 kl. 07.49.31.mp4" type="video/mp4" />
+        Nettleseren din støtter ikke videoavspilling.
+      </video>
     </div>
-        </section>
+    <div className="content-container">
+      <h3>Gmail Automatisering</h3>
+      <p>
+        Denne løsningen bruker AI for å automatisere svar på e-poster, noe som kan redusere tiden brukt på kundekontakt med opptil <strong>95%</strong>.
+        Dette gir mer effektiv kundehåndtering og raskere responstider.
+      </p>
+    </div>
+  </div>
+
+  <div className="portfolio-item">
+    <div className="video-container">
+      <video controls autoPlay loop muted>
+        <source src="/Skjermopptak%202025-01-31%20kl.%2021.25.27.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div className="content-container">
+      <h3>AI Produktbeskrivelse Generator</h3>
+      <p>
+        Vår AI-drevne produktbeskrivelse generator hjelper deg med å lage profesjonelle, 
+        SEO-optimaliserte beskrivelser på sekunder. Perfekt for nettbutikker og markedsførere!
+      </p>
+    </div>
+  </div>
+</section>
       </main>
 
       <div id="contact-popup" className="popup hidden">

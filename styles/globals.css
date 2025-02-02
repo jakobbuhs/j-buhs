@@ -299,3 +299,57 @@ body {
 .portfolio-item p {
     color: var(--text-secondary);
 }
+/* Update navbar styles */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .navbar .logo {
+    margin-right: auto;
+    padding-left: 20px;
+  }
+  
+  .navbar nav {
+    margin-left: auto;
+    padding-right: 20px;
+  }
+  
+  /* Update portfolio styles */
+  .portfolio-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1200px;
+  }
+  
+  .portfolio-item .video-container {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .portfolio-item .content-container {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .portfolio-item video {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  /* Make portfolio items stack on mobile */
+  @media (max-width: 768px) {
+    .portfolio-item {
+      flex-direction: column;
+    }
+    
+    .portfolio-item .video-container,
+    .portfolio-item .content-container {
+      width: 100%;
+    }
+  }
