@@ -188,7 +188,7 @@ export default function Home() {
       <p>© 2025 J.BUHS</p>
     </div>
     <div className="footer-section">
-      <h3>Driftes på vegne og av Miljø-IT AS</h3>
+      <h3>Driftes av Miljø-IT AS</h3>
       <p>Org.nr: 992 874 058</p>
     </div>
     <div className="footer-section">
