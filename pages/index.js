@@ -188,12 +188,12 @@ export default function Home() {
       <p>© 2025 J.BUHS</p>
     </div>
     <div className="footer-section">
-      <h3>Organisasjonsnummer</h3>
+      <h3>Driftes på vegne og av Miljø-IT AS</h3>
       <p>Org.nr: 992 874 058</p>
     </div>
     <div className="footer-section">
       <h3>Kontakt</h3>
-      <p>Jakob Buhs</p>
+      <p>Daglig leder: Jakob Buhs</p>
       <p>Telefon: 95498228</p>
       <p>Epost: jakob@jbuhs.no</p>
     </div>
