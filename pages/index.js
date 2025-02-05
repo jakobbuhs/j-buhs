@@ -182,10 +182,23 @@ export default function Home() {
       </div>
 
       <footer className="footer">
-        <div className="container">
-          <p>© 2025 J.BUHS | Org.nr: 934 868 943 | Kontakt: Jakob Buhs, TLF: 95498228 Epost: jakob@jbuhs.no | All rights reserved</p>
-        </div>
-      </footer>
+  <div className="container">
+    <div className="footer-section">
+      <h3>J.BUHS</h3>
+      <p>© 2025 J.BUHS</p>
+    </div>
+    <div className="footer-section">
+      <h3>Organisasjonsnummer</h3>
+      <p>Org.nr: 992 874 058</p>
+    </div>
+    <div className="footer-section">
+      <h3>Kontakt</h3>
+      <p>Jakob Buhs</p>
+      <p>Telefon: 95498228</p>
+      <p>Epost: jakob@jbuhs.no</p>
+    </div>
+  </div>
+</footer>
     </>
   );
 }
