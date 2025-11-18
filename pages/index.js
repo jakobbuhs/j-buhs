@@ -134,7 +134,7 @@ export default function Home() {
       <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <div className="logo" onClick={() => window.scrollToSection?.('home')} style={{ cursor: 'pointer' }}>
-            <img src="/full_size_logo.png" alt="TechFlow Logo" style={{ height: '40px', width: 'auto' }} />
+            <img src="/full_size_logo.png" alt="TechFlow Logo" style={{ height: '48px', width: 'auto' }} />
           </div>
           <nav>
             <ul>
