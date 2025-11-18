@@ -125,12 +125,15 @@ export default function Home() {
         <title>TechFlow - App Utvikling & Digitale Løsninger</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Vi utvikler skreddersydde apper og digitale løsninger som tar bedriften din til neste nivå. Få din egen app fra 50.000 NOK." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
-          <h1 className="logo">TechFlow</h1>
+          <div className="logo" onClick={() => window.scrollToSection?.('home')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <img src="/full_size_logo.png" alt="TechFlow Logo" style={{ height: '40px', width: 'auto' }} />
+            <h1 style={{ margin: 0 }}>TechFlow</h1>
+          </div>
           <nav>
             <ul>
               <li><button onClick={() => window.scrollToSection?.('home')}>Hjem</button></li>
@@ -797,7 +800,10 @@ export default function Home() {
       <footer className="footer">
         <div className="container">
           <div className="footer-section">
-            <h3>TechFlow</h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <img src="/full_size_logo.png" alt="TechFlow Logo" style={{ height: '32px', width: 'auto' }} />
+              <h3 style={{ margin: 0 }}>TechFlow</h3>
+            </div>
             <p style={{ marginBottom: '1rem' }}>Vi utvikler skreddersydde apper og digitale løsninger for fremtidens bedrifter.</p>
             <p><strong>🚀 MVP på 1 dag på forespørsel</strong></p>
             <p>Rask utvikling • Norsk support • Transparente priser</p>

@@ -73,7 +73,21 @@ body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.navbar .logo h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  transition: color 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .navbar.scrolled .logo {
+  color: var(--blue);
+  text-shadow: none;
+}
+
+.navbar.scrolled .logo h1 {
   color: var(--blue);
   text-shadow: none;
 }
@@ -1111,8 +1125,13 @@ body {
     font-size: 2rem;
   }
 
-  .navbar .logo {
+  .navbar .logo,
+  .navbar .logo h1 {
     font-size: 1.5rem;
+  }
+  
+  .navbar .logo img {
+    height: 32px;
   }
 
   .hero-tag {
