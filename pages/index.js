@@ -165,7 +165,7 @@ export default function Home() {
         {/* Hero Section */}
         <section id="home" className="hero">
           <video autoPlay loop muted playsInline className="hero-video" poster="/favicon.png">
-            <source src="/Skjermopptak 2025-01-29 kl. 07.49.31.mp4" type="video/mp4" />
+            <source src="/northern_lights.mp4" type="video/mp4" />
             {/* Add your atmospheric video here - replace the source above with your video file */}
           </video>
           <div className="hero-overlay"></div>
