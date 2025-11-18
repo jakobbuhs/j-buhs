@@ -233,17 +233,43 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Stats Section */}
+        <section className="section section-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
+          <div className="container">
+            <div className="stats-grid animate-on-scroll">
+              <div className="stat-item">
+                <div className="stat-number">5+</div>
+                <div className="stat-label">Apper utviklet</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">95%</div>
+                <div className="stat-label">Tidsbesparelse</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">100%</div>
+                <div className="stat-label">Kundetilfredshet</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">24/7</div>
+                <div className="stat-label">Support tilgjengelig</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Portfolio Section */}
-        <section id="portfolio" className="section section-light">
+        <section id="portfolio" className="section section-gradient">
           <div className="container">
             <div className="section-header animate-on-scroll">
               <h2 className="section-title">Våre løsninger</h2>
               <p className="section-description">
-                Se hvordan vi har hjulpet bedrifter med å automatisere prosesser og spare verdifull tid.
+                Vi har utviklet skreddersydde løsninger for ulike bransjer - fra e-handel til regnskap. 
+                Hver app er bygget med fokus på automatisering, effektivitet og brukervennlighet.
               </p>
             </div>
 
             <div className="portfolio-grid">
+              {/* Gmail Automation */}
               <div className="portfolio-item animate-on-scroll">
                 <div className="video-container">
                   <video autoPlay loop muted playsInline>
@@ -252,20 +278,32 @@ export default function Home() {
                   </video>
                 </div>
                 <div className="content-container">
-                  <h3>Gmail Automatisering</h3>
+                  <div className="project-category">Kundeservice Automatisering</div>
+                  <h3>Gmail AI Automatisering</h3>
                   <p>
-                    Denne løsningen bruker AI for å automatisere svar på e-poster, noe som kan redusere 
-                    tiden brukt på kundekontakt med opptil <strong>95%</strong>. Dette gir mer effektiv 
-                    kundehåndtering og raskere responstider, slik at teamet ditt kan fokusere på viktigere oppgaver.
+                    En revolusjonerende løsning som bruker avansert AI for å automatisere e-posthåndtering. 
+                    Systemet analyserer innkommende e-poster, forstår kontekst og sender intelligente, 
+                    personaliserte svar automatisk.
                   </p>
-                  <p style={{ marginTop: '1rem', color: '#1e3a8a', fontWeight: '600' }}>
-                    ✓ Automatiske svar basert på AI<br/>
-                    ✓ 95% tidsbesparelse<br/>
-                    ✓ Bedre kundetilfredshet
-                  </p>
+                  <div className="project-metrics">
+                    <div className="metric">
+                      <span className="metric-value">95%</span>
+                      <span className="metric-label">Mindre tid på e-post</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">10x</span>
+                      <span className="metric-label">Raskere responstid</span>
+                    </div>
+                  </div>
+                  <div className="project-tech">
+                    <span className="tech-tag">AI/ML</span>
+                    <span className="tech-tag">Gmail API</span>
+                    <span className="tech-tag">Natural Language Processing</span>
+                  </div>
                 </div>
               </div>
 
+              {/* Product Description Generator */}
               <div className="portfolio-item animate-on-scroll">
                 <div className="video-container">
                   <video autoPlay loop muted playsInline>
@@ -274,17 +312,136 @@ export default function Home() {
                   </video>
                 </div>
                 <div className="content-container">
+                  <div className="project-category">E-handel Verktøy</div>
                   <h3>AI Produktbeskrivelse Generator</h3>
                   <p>
-                    Vår AI-drevne produktbeskrivelse generator hjelper deg med å lage profesjonelle, 
-                    SEO-optimaliserte beskrivelser på sekunder. Perfekt for nettbutikker som ønsker 
-                    å spare tid og forbedre konvertering samtidig.
+                    Kraftig AI-drevet verktøy som genererer overbevisende, SEO-optimaliserte produktbeskrivelser 
+                    på sekunder. Perfekt for nettbutikker med hundrevis eller tusenvis av produkter som trenger 
+                    unike, engasjerende beskrivelser.
                   </p>
-                  <p style={{ marginTop: '1rem', color: '#1e3a8a', fontWeight: '600' }}>
-                    ✓ SEO-optimaliserte beskrivelser<br/>
-                    ✓ Ferdig på sekunder<br/>
-                    ✓ Profesjonell kvalitet
+                  <div className="project-metrics">
+                    <div className="metric">
+                      <span className="metric-value">100+</span>
+                      <span className="metric-label">Beskrivelser/time</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">40%</span>
+                      <span className="metric-label">Økt konvertering</span>
+                    </div>
+                  </div>
+                  <div className="project-tech">
+                    <span className="tech-tag">AI/GPT</span>
+                    <span className="tech-tag">SEO Optimalisering</span>
+                    <span className="tech-tag">Bulk Processing</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* iOS POS Shopify App */}
+              <div className="portfolio-item animate-on-scroll">
+                <div className="video-container" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
+                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📱</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>iOS POS System</div>
+                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>Shopify Integration</div>
+                  </div>
+                </div>
+                <div className="content-container">
+                  <div className="project-category">Retail & E-handel</div>
+                  <h3>iOS POS Shopify App</h3>
+                  <p>
+                    Komplett kassasystem (Point of Sale) for iOS med sømløs Shopify-integrasjon. 
+                    Gjør det mulig for butikker å håndtere salg både i fysisk butikk og online fra én plattform. 
+                    Sanntidssynkronisering av lager, produkter og kundedata.
                   </p>
+                  <div className="project-metrics">
+                    <div className="metric">
+                      <span className="metric-value">Sanntid</span>
+                      <span className="metric-label">Lagersynkronisering</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">Multi-kanal</span>
+                      <span className="metric-label">Salg håndtering</span>
+                    </div>
+                  </div>
+                  <div className="project-tech">
+                    <span className="tech-tag">iOS/Swift</span>
+                    <span className="tech-tag">Shopify API</span>
+                    <span className="tech-tag">Real-time Sync</span>
+                    <span className="tech-tag">Payment Integration</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dealer Tracker */}
+              <div className="portfolio-item animate-on-scroll">
+                <div className="video-container" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
+                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📊</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>Dealer Tracker</div>
+                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>Delay Management System</div>
+                  </div>
+                </div>
+                <div className="content-container">
+                  <div className="project-category">Supply Chain Management</div>
+                  <h3>Dealer Tracking System</h3>
+                  <p>
+                    Avansert system for å spore og håndtere forsinkelser fra leverandører og dealers. 
+                    Automatisk logging av alle endringer, delay-notifikasjoner, og omfattende rapportering. 
+                    Gir fullstendig oversikt over leverandørkjeden og identifiserer mønstre i forsinkelser.
+                  </p>
+                  <div className="project-metrics">
+                    <div className="metric">
+                      <span className="metric-value">Auto</span>
+                      <span className="metric-label">Change logging</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">Real-time</span>
+                      <span className="metric-label">Varsler</span>
+                    </div>
+                  </div>
+                  <div className="project-tech">
+                    <span className="tech-tag">React</span>
+                    <span className="tech-tag">Node.js</span>
+                    <span className="tech-tag">Real-time Updates</span>
+                    <span className="tech-tag">Analytics</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* PowerOffice Bookkeeping App */}
+              <div className="portfolio-item animate-on-scroll">
+                <div className="video-container" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
+                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📝</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>Automatisk Regnskap</div>
+                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>PowerOffice Integration</div>
+                  </div>
+                </div>
+                <div className="content-container">
+                  <div className="project-category">Økonomi & Regnskap</div>
+                  <h3>PowerOffice Journal Entry App</h3>
+                  <p>
+                    Intelligent regnskapsløsning som automatiserer bilagsføring i PowerOffice. 
+                    AI-drevet system som kategoriserer transaksjoner, validerer data og fører bilag 
+                    automatisk i riktig konto. Reduserer regnskapsarbeid fra timer til minutter.
+                  </p>
+                  <div className="project-metrics">
+                    <div className="metric">
+                      <span className="metric-value">90%</span>
+                      <span className="metric-label">Mindre manuelt arbeid</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">100%</span>
+                      <span className="metric-label">Nøyaktighet</span>
+                    </div>
+                  </div>
+                  <div className="project-tech">
+                    <span className="tech-tag">PowerOffice API</span>
+                    <span className="tech-tag">AI Classification</span>
+                    <span className="tech-tag">Automation</span>
+                    <span className="tech-tag">Validation</span>
+                  </div>
                 </div>
               </div>
             </div>
