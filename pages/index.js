@@ -7,13 +7,29 @@ export default function Home() {
     message: '',
     isError: false
   });
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    // Handle scroll effect for navbar
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Smooth scroll function
     if (typeof window !== 'undefined') {
       window.scrollToSection = (sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
+          const offset = 80; // Navbar height
+          const elementPosition = section.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
       };
 
@@ -24,6 +40,33 @@ export default function Home() {
         }
       };
     }
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    setTimeout(() => {
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    }, 100);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const handleSubmit = async (e) => {
@@ -79,81 +122,193 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>J.BUHS</title>
+        <title>J.BUHS - Automatisering & Digitale Løsninger</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Vi automatiserer prosesser og skaper digitale løsninger som gir bedriften din mer tid til det som betyr mest. Få 95% reduksjon i manuelt arbeid." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="navbar">
+      <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <h1 className="logo">J.BUHS</h1>
           <nav>
             <ul>
               <li><button onClick={() => window.scrollToSection?.('home')}>Hjem</button></li>
-              <li><button onClick={() => window.scrollToSection?.('why')}>Hvorfor J.BUHS</button></li>
+              <li><button onClick={() => window.scrollToSection?.('why')}>Hvorfor oss</button></li>
               <li><button onClick={() => window.scrollToSection?.('portfolio')}>Portefølje</button></li>
               <li><button onClick={() => window.toggleContactPopup?.()}>Kontakt oss</button></li>
             </ul>
           </nav>
+          <button className="mobile-menu-toggle" aria-label="Meny">
+            ☰
+          </button>
         </div>
       </header>
 
       <main>
-        <section id="home" className="section home">
-          <h2>Velkommen til J.BUHS</h2>
-          <p>Lite tid?
-            Vi hjelper deg med å automatisere prosesser slik at du kan fokusere på det viktigste.
-            Ta kontakt for en uforpliktende prat om hva vi kan hjelpe deg med. Vi tilbyr de beste tjenestene for meget gode priser.
-          </p>
+        {/* Hero Section */}
+        <section id="home" className="hero">
+          <div className="container">
+            <div className="hero-content">
+              <span className="hero-tag">Automatisering & Digitale Løsninger</span>
+              <h1>Mer tid til det som betyr mest</h1>
+              <p>
+                Vi hjelper deg med å automatisere prosesser og skape digitale løsninger som frigjør tiden din. 
+                La teknologien jobbe for deg, slik at du kan fokusere på å vokse.
+              </p>
+              <button className="hero-cta" onClick={() => window.scrollToSection?.('portfolio')}>
+                Se våre løsninger
+              </button>
+            </div>
+          </div>
         </section>
 
-        <section id="why" className="section why">
-          <h2>Hvorfor velge oss?</h2>
-          <p>Vi leverer skreddersydde, gjennomførte og automatiserende løsninger slik at du kan fokusere på det viktigste.
-            Alt vi gjør blir gjort etter kunders behov og ønsker.
-            Vi har lang erfaring og kan hjelpe deg med alt fra nettsider til automatisering av prosesser.
-            Vi har også et stort fokus på sikkerhet og personvern slik at du kan være trygg på at dine data er i trygge hender.
-            Ta kontakt for en uforpliktende prat om hva vi kan hjelpe deg med.
-            Videre har vi god erfaring med bedriftutvikling og har tidligere hjulpet bedrifter fra NOK 30 millioner i omsetning til over NOK 140 millioner i omsetning.
-          </p>
+        {/* Why Choose Us Section */}
+        <section id="why" className="section section-gradient">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Hvorfor velge J.BUHS?</h2>
+              <p className="section-description">
+                Vi leverer skreddersydde løsninger som er tilpasset akkurat dine behov. 
+                Med fokus på automatisering, sikkerhet og resultater.
+              </p>
+            </div>
+
+            <div className="features-grid">
+              <div className="feature-card animate-on-scroll fade-in-up-delay-1">
+                <div className="feature-icon">🚀</div>
+                <h3>Skreddersydde løsninger</h3>
+                <p>
+                  Hver løsning tilpasses dine spesifikke behov og utfordringer. 
+                  Vi lytter, forstår og leverer nøyaktig det du trenger.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-2">
+                <div className="feature-icon">⚡</div>
+                <h3>Effektiv automatisering</h3>
+                <p>
+                  Spar opptil 95% av tiden på repeterende oppgaver. 
+                  La AI og automatisering gjøre jobben mens du fokuserer på vekst.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-3">
+                <div className="feature-icon">🔒</div>
+                <h3>Sikkerhet først</h3>
+                <p>
+                  Dine data er i trygge hender. Vi har stort fokus på sikkerhet og personvern 
+                  i alle våre løsninger.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-1">
+                <div className="feature-icon">📈</div>
+                <h3>Dokumenterte resultater</h3>
+                <p>
+                  Vi har hjulpet bedrifter fra NOK 30 millioner til over NOK 140 millioner i omsetning. 
+                  Erfaring som gir resultater.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-2">
+                <div className="feature-icon">💡</div>
+                <h3>Innovativ teknologi</h3>
+                <p>
+                  Vi bruker de nyeste teknologiene innen AI og automatisering for å gi deg 
+                  konkurransefortrinn.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-3">
+                <div className="feature-icon">🤝</div>
+                <h3>Personlig oppfølging</h3>
+                <p>
+                  Du får dedikert støtte og oppfølging gjennom hele prosessen. 
+                  Vi er med deg hele veien.
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section id="portfolio" className="section portfolio">
-  <h2>Portefølje</h2>
-  <p>Se våre tidligere prosjekter og hva vi kan tilby.</p>
+        {/* Portfolio Section */}
+        <section id="portfolio" className="section section-light">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Våre løsninger</h2>
+              <p className="section-description">
+                Se hvordan vi har hjulpet bedrifter med å automatisere prosesser og spare verdifull tid.
+              </p>
+            </div>
 
-  <div className="portfolio-item">
-    <div className="video-container">
-      <video autoPlay loop muted>
-        <source src="/Skjermopptak 2025-01-29 kl. 07.49.31.mp4" type="video/mp4" />
-        Nettleseren din støtter ikke videoavspilling.
-      </video>
-    </div>
-    <div className="content-container">
-      <h3>Gmail Automatisering</h3>
-      <p>
-        Denne løsningen bruker AI for å automatisere svar på e-poster, noe som kan redusere tiden brukt på kundekontakt med opptil <strong>95%</strong>.
-        Dette gir mer effektiv kundehåndtering og raskere responstider.
-      </p>
-    </div>
-  </div>
+            <div className="portfolio-grid">
+              <div className="portfolio-item animate-on-scroll">
+                <div className="video-container">
+                  <video autoPlay loop muted playsInline>
+                    <source src="/Skjermopptak 2025-01-29 kl. 07.49.31.mp4" type="video/mp4" />
+                    Nettleseren din støtter ikke videoavspilling.
+                  </video>
+                </div>
+                <div className="content-container">
+                  <h3>Gmail Automatisering</h3>
+                  <p>
+                    Denne løsningen bruker AI for å automatisere svar på e-poster, noe som kan redusere 
+                    tiden brukt på kundekontakt med opptil <strong>95%</strong>. Dette gir mer effektiv 
+                    kundehåndtering og raskere responstider, slik at teamet ditt kan fokusere på viktigere oppgaver.
+                  </p>
+                  <p style={{ marginTop: '1rem', color: '#1e3a8a', fontWeight: '600' }}>
+                    ✓ Automatiske svar basert på AI<br/>
+                    ✓ 95% tidsbesparelse<br/>
+                    ✓ Bedre kundetilfredshet
+                  </p>
+                </div>
+              </div>
 
-  <div className="portfolio-item">
-    <div className="video-container">
-      <video controls autoPlay loop muted>
-        <source src="/Skjermopptak%202025-01-31%20kl.%2021.25.27.mp4" type="video/mp4"/>
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div className="content-container">
-      <h3>AI Produktbeskrivelse Generator</h3>
-      <p>
-        Vår AI-drevne produktbeskrivelse generator hjelper deg med å lage profesjonelle, 
-        SEO-optimaliserte beskrivelser på sekunder. Perfekt for nettbutikker og markedsførere!
-      </p>
-    </div>
-  </div>
-</section>
+              <div className="portfolio-item animate-on-scroll">
+                <div className="video-container">
+                  <video autoPlay loop muted playsInline>
+                    <source src="/Skjermopptak%202025-01-31%20kl.%2021.25.27.mp4" type="video/mp4"/>
+                    Nettleseren din støtter ikke videoavspilling.
+                  </video>
+                </div>
+                <div className="content-container">
+                  <h3>AI Produktbeskrivelse Generator</h3>
+                  <p>
+                    Vår AI-drevne produktbeskrivelse generator hjelper deg med å lage profesjonelle, 
+                    SEO-optimaliserte beskrivelser på sekunder. Perfekt for nettbutikker som ønsker 
+                    å spare tid og forbedre konvertering samtidig.
+                  </p>
+                  <p style={{ marginTop: '1rem', color: '#1e3a8a', fontWeight: '600' }}>
+                    ✓ SEO-optimaliserte beskrivelser<br/>
+                    ✓ Ferdig på sekunder<br/>
+                    ✓ Profesjonell kvalitet
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="section section-dark">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Klar for å komme i gang?</h2>
+              <p className="section-description">
+                Ta kontakt for en uforpliktende prat om hvordan vi kan hjelpe din bedrift 
+                med automatisering og digitale løsninger.
+              </p>
+              <button 
+                className="hero-cta" 
+                onClick={() => window.toggleContactPopup?.()}
+                style={{ marginTop: '2rem' }}
+              >
+                Kontakt oss i dag
+              </button>
+            </div>
+          </div>
+        </section>
       </main>
 
       <div id="contact-popup" className="popup hidden">
@@ -182,23 +337,29 @@ export default function Home() {
       </div>
 
       <footer className="footer">
-  <div className="container">
-    <div className="footer-section">
-      <h3>J.BUHS</h3>
-      <p>© 2025 J.BUHS</p>
-    </div>
-    <div className="footer-section">
-      <h3>Driftes av Miljø-IT AS</h3>
-      <p>Org.nr: 992 874 058</p>
-    </div>
-    <div className="footer-section">
-      <h3>Kontakt</h3>
-      <p>Daglig leder: Jakob Buhs</p>
-      <p>Telefon: 95498228</p>
-      <p>Epost: jakob@jbuhs.no</p>
-    </div>
-  </div>
-</footer>
+        <div className="container">
+          <div className="footer-section">
+            <h3>J.BUHS</h3>
+            <p>Vi automatiserer prosesser og skaper digitale løsninger for fremtidens bedrifter.</p>
+          </div>
+          <div className="footer-section">
+            <h3>Driftes av</h3>
+            <p>Miljø-IT AS</p>
+            <p>Org.nr: 992 874 058</p>
+          </div>
+          <div className="footer-section">
+            <h3>Kontakt</h3>
+            <p>Daglig leder: Jakob Buhs</p>
+            <p>Telefon: 95498228</p>
+            <p>E-post: jakob@jbuhs.no</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <div className="container">
+            <p>© 2025 J.BUHS. Alle rettigheter reservert.</p>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
