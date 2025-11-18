@@ -122,20 +122,21 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>J.BUHS - Automatisering & Digitale Løsninger</title>
+        <title>TechFlow - App Utvikling & Digitale Løsninger</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Vi automatiserer prosesser og skaper digitale løsninger som gir bedriften din mer tid til det som betyr mest. Få 95% reduksjon i manuelt arbeid." />
+        <meta name="description" content="Vi utvikler skreddersydde apper og digitale løsninger som tar bedriften din til neste nivå. Få din egen app fra 50.000 NOK." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
-          <h1 className="logo">J.BUHS</h1>
+          <h1 className="logo">TechFlow</h1>
           <nav>
             <ul>
               <li><button onClick={() => window.scrollToSection?.('home')}>Hjem</button></li>
               <li><button onClick={() => window.scrollToSection?.('why')}>Hvorfor oss</button></li>
               <li><button onClick={() => window.scrollToSection?.('portfolio')}>Portefølje</button></li>
+              <li><button onClick={() => window.scrollToSection?.('pricing')}>Priser</button></li>
               <li><button onClick={() => window.toggleContactPopup?.()}>Kontakt oss</button></li>
             </ul>
           </nav>
@@ -290,14 +291,173 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Why Apps Matter Section */}
+        <section className="section section-dark">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Hvorfor trenger bedriften din en app?</h2>
+              <p className="section-description">
+                I dagens digitale verden er en skreddersydd app ikke lenger en luksus - det er en nødvendighet 
+                for bedrifter som ønsker å være konkurransedyktige.
+              </p>
+            </div>
+
+            <div className="features-grid">
+              <div className="feature-card animate-on-scroll fade-in-up-delay-1" style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, #f97316, #fb923c)' }}>📱</div>
+                <h3 style={{ color: 'white' }}>Tilgjengelighet 24/7</h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Kundene dine får tilgang til dine tjenester når som helst, hvor som helst. 
+                  Ingen åpningstider, ingen begrensninger.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-2" style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, #f97316, #fb923c)' }}>🚀</div>
+                <h3 style={{ color: 'white' }}>Økt produktivitet</h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Automatiser arbeidsflyter, reduser manuelt arbeid og la teamet ditt fokusere 
+                  på det som skaper verdi.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-3" style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, #f97316, #fb923c)' }}>💰</div>
+                <h3 style={{ color: 'white' }}>Kostnadsbesparelser</h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Automatisering kan redusere driftskostnader med opptil 70% ved å 
+                  erstatte manuelle prosesser.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-1" style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, #f97316, #fb923c)' }}>📊</div>
+                <h3 style={{ color: 'white' }}>Bedre innsikt</h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Få verdifull data om hvordan kundene bruker tjenestene dine og ta 
+                  informerte beslutninger basert på faktisk bruk.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-2" style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, #f97316, #fb923c)' }}>💎</div>
+                <h3 style={{ color: 'white' }}>Konkurransefortrinn</h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Skill deg ut fra konkurrentene med en profesjonell app som gir kundene 
+                  dine en overlegen opplevelse.
+                </p>
+              </div>
+
+              <div className="feature-card animate-on-scroll fade-in-up-delay-3" style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, #f97316, #fb923c)' }}>🎯</div>
+                <h3 style={{ color: 'white' }}>Direkte kommunikasjon</h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Kommuniser direkte med kundene dine gjennom push-varsler, tilbud og 
+                  personaliserte meldinger.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="pricing" className="section section-gradient">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Transparente priser</h2>
+              <p className="section-description">
+                Vi tror på åpenhet. Her er våre startpriser for ulike typer løsninger. 
+                Kontakt oss for et skreddersydd tilbud tilpasset dine behov.
+              </p>
+            </div>
+
+            <div className="pricing-grid">
+              <div className="pricing-card animate-on-scroll fade-in-up-delay-1">
+                <div className="pricing-header">
+                  <h3>Enkel App</h3>
+                  <div className="price">
+                    <span className="price-amount">50.000,-</span>
+                    <span className="price-period">fra</span>
+                  </div>
+                </div>
+                <ul className="pricing-features">
+                  <li>✓ Grunnleggende funksjonalitet</li>
+                  <li>✓ Responsivt design</li>
+                  <li>✓ Brukervennlig interface</li>
+                  <li>✓ 3 måneders support</li>
+                  <li>✓ Grunnleggende sikkerhet</li>
+                  <li>✓ Deployment</li>
+                </ul>
+                <button className="pricing-cta" onClick={() => window.toggleContactPopup?.()}>
+                  Få tilbud
+                </button>
+              </div>
+
+              <div className="pricing-card featured animate-on-scroll fade-in-up-delay-2">
+                <div className="featured-badge">Mest populær</div>
+                <div className="pricing-header">
+                  <h3>Avansert App</h3>
+                  <div className="price">
+                    <span className="price-amount">150.000,-</span>
+                    <span className="price-period">fra</span>
+                  </div>
+                </div>
+                <ul className="pricing-features">
+                  <li>✓ Alt i Enkel App</li>
+                  <li>✓ Database-integrasjon</li>
+                  <li>✓ API-utvikling</li>
+                  <li>✓ Brukerautentisering</li>
+                  <li>✓ Admin-panel</li>
+                  <li>✓ 6 måneders support</li>
+                  <li>✓ Push-varsler</li>
+                  <li>✓ Analytics-integrasjon</li>
+                </ul>
+                <button className="pricing-cta primary" onClick={() => window.toggleContactPopup?.()}>
+                  Få tilbud
+                </button>
+              </div>
+
+              <div className="pricing-card animate-on-scroll fade-in-up-delay-3">
+                <div className="pricing-header">
+                  <h3>Enterprise-løsning</h3>
+                  <div className="price">
+                    <span className="price-amount">Tilpasset</span>
+                    <span className="price-period">pris</span>
+                  </div>
+                </div>
+                <ul className="pricing-features">
+                  <li>✓ Alt i Avansert App</li>
+                  <li>✓ Skreddersydd arkitektur</li>
+                  <li>✓ Skalerbar infrastruktur</li>
+                  <li>✓ Avansert sikkerhet</li>
+                  <li>✓ Dedikert support</li>
+                  <li>✓ SLA-garantier</li>
+                  <li>✓ Integrasjoner</li>
+                  <li>✓ Continuous deployment</li>
+                </ul>
+                <button className="pricing-cta" onClick={() => window.toggleContactPopup?.()}>
+                  Kontakt oss
+                </button>
+              </div>
+            </div>
+
+            <div className="pricing-note animate-on-scroll" style={{ marginTop: '3rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '1rem', color: '#64748b', maxWidth: '600px', margin: '0 auto' }}>
+                <strong>Merk:</strong> Alle priser er startpriser og kan variere basert på kompleksitet, 
+                funksjonalitet og dine spesifikke behov. Kontakt oss for et nøyaktig tilbud.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="section section-dark">
           <div className="container">
             <div className="section-header animate-on-scroll">
-              <h2 className="section-title">Klar for å komme i gang?</h2>
+              <h2 className="section-title">Klar for å ta bedriften din til neste nivå?</h2>
               <p className="section-description">
-                Ta kontakt for en uforpliktende prat om hvordan vi kan hjelpe din bedrift 
-                med automatisering og digitale løsninger.
+                La oss skape en skreddersydd løsning som passer perfekt for din bedrift. 
+                Ta kontakt i dag for en uforpliktende prat.
               </p>
               <button 
                 className="hero-cta" 
@@ -339,8 +499,8 @@ export default function Home() {
       <footer className="footer">
         <div className="container">
           <div className="footer-section">
-            <h3>J.BUHS</h3>
-            <p>Vi automatiserer prosesser og skaper digitale løsninger for fremtidens bedrifter.</p>
+            <h3>TechFlow</h3>
+            <p>Vi utvikler skreddersydde apper og digitale løsninger for fremtidens bedrifter.</p>
           </div>
           <div className="footer-section">
             <h3>Driftes av</h3>
@@ -356,7 +516,7 @@ export default function Home() {
         </div>
         <div className="footer-bottom">
           <div className="container">
-            <p>© 2025 J.BUHS. Alle rettigheter reservert.</p>
+            <p>© 2025 TechFlow. Alle rettigheter reservert.</p>
           </div>
         </div>
       </footer>
