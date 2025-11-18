@@ -10,9 +10,18 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // Handle scroll effect for navbar
+    // Handle scroll effect for navbar and parallax
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      
+      // Parallax effect for hero content
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent) {
+        const scrolled = window.pageYOffset;
+        const parallaxSpeed = 0.5;
+        heroContent.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        heroContent.style.opacity = 1 - (scrolled / 600);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -155,23 +164,27 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <section id="home" className="hero">
+          <video autoPlay loop muted playsInline className="hero-video" poster="/favicon.png">
+            <source src="/Skjermopptak 2025-01-29 kl. 07.49.31.mp4" type="video/mp4" />
+            {/* Add your atmospheric video here - replace the source above with your video file */}
+          </video>
+          <div className="hero-overlay"></div>
           <div className="container">
             <div className="hero-content">
-              <span className="hero-tag">🚀 MVP på 1 dag • Rask utvikling • Norske bedrifter</span>
-              <h1>Mer tid til det som betyr mest</h1>
-              <p>
-                Vi leverer lynraske digitale løsninger som automatiserer prosesser og frigjør tiden din. 
-                <strong> MVP på kun én dag på forespørsel</strong> - vi gjør endringer raskt mens andre planlegger.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
-                <button className="hero-cta" onClick={() => window.toggleContactPopup?.()}>
-                  Få gratis konsultasjon
+              <h1 className="hero-headline">Execute the Unknown</h1>
+              <p className="hero-subtitle">Navigate uncertain challenges with expertise in Digital Strategy & Innovation</p>
+              <div className="hero-buttons">
+                <button className="hero-cta-primary" onClick={() => window.toggleContactPopup?.()}>
+                  Start Your Project
                 </button>
                 <button className="hero-cta-secondary" onClick={() => window.scrollToSection?.('portfolio')}>
-                  Se våre løsninger
+                  View Our Work ↓
                 </button>
               </div>
             </div>
+          </div>
+          <div className="scroll-indicator">
+            <span>↓</span>
           </div>
         </section>
 

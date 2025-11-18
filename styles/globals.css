@@ -200,105 +200,153 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   position: relative;
   overflow: hidden;
   padding-top: 80px;
 }
 
-.hero::before {
-  content: '';
+/* Video Background */
+.hero-video {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Dark Overlay for Text Readability */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  animation: fadeInUp 1s ease-out;
 }
 
-.hero-tag {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--white);
-  padding: 0.5rem 1.5rem;
-  border-radius: 50px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 2rem;
-  backdrop-filter: blur(10px);
-}
-
-.hero h1 {
-  font-size: 4rem;
-  font-weight: 800;
+/* Hero Headline with Stagger Animation */
+.hero-headline {
+  font-size: 5rem;
+  font-weight: 900;
   color: var(--white);
   margin-bottom: 1.5rem;
   line-height: 1.1;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out 0.2s backwards;
 }
 
-.hero p {
-  font-size: 1.25rem;
+/* Hero Subtitle */
+.hero-subtitle {
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.95);
-  line-height: 1.8;
+  line-height: 1.6;
   margin-bottom: 2.5rem;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 400;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out 0.4s backwards;
 }
 
-.hero-cta {
-  background: var(--white);
-  color: var(--blue);
-  padding: 1rem 2.5rem;
-  font-size: 1.125rem;
-  font-weight: 600;
+/* Hero Buttons Container */
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-out 0.6s backwards;
+}
+
+/* Primary CTA with High Contrast */
+.hero-cta-primary {
+  background: var(--orange);
+  color: var(--white);
+  padding: 1.25rem 3rem;
+  font-size: 1.25rem;
+  font-weight: 700;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.hero-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+.hero-cta-primary:hover {
+  background: #ea580c;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(249, 115, 22, 0.5);
 }
 
+/* Secondary CTA - Ghost Button */
 .hero-cta-secondary {
   background: transparent;
   color: var(--white);
-  padding: 1rem 2.5rem;
+  padding: 1.25rem 3rem;
   font-size: 1.125rem;
   font-weight: 600;
-  border: 2px solid var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-cta-secondary:hover {
-  background: var(--white);
-  color: var(--blue);
-  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--white);
+  transform: translateY(-4px);
+  backdrop-filter: blur(10px);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+  font-size: 2rem;
+  color: var(--white);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+/* Bounce Animation for Scroll Indicator */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-8px);
+  }
 }
 
 /* Section styles */
@@ -1009,8 +1057,19 @@ body {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .hero h1 {
-    font-size: 3rem;
+  .hero-headline {
+    font-size: 3.5rem;
+    letter-spacing: -2px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
 
   .section-title {
@@ -1051,16 +1110,46 @@ body {
     display: block;
   }
 
-  .hero h1 {
-    font-size: 2.5rem;
+  /* Performance: Use static gradient on mobile instead of video */
+  .hero-video {
+    display: none;
   }
 
-  .hero p {
+  .hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #667eea 100%);
+  }
+
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-headline {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-subtitle {
     font-size: 1.125rem;
   }
 
-  .hero-tag {
-    font-size: 0.75rem;
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+
+  .scroll-indicator span {
+    font-size: 1.5rem;
   }
 
   .section {
@@ -1113,16 +1202,22 @@ body {
   .faq-grid {
     grid-template-columns: 1fr;
   }
-
-  .hero-cta, .hero-cta-secondary {
-    width: 100%;
-    padding: 0.875rem 1.5rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .hero h1 {
+  .hero-headline {
     font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
   }
 
   .navbar .logo,
@@ -1132,11 +1227,6 @@ body {
   
   .navbar .logo img {
     height: 40px;
-  }
-
-  .hero-tag {
-    font-size: 0.75rem;
-    padding: 0.375rem 1rem;
   }
 
   .stats-grid {
@@ -1155,6 +1245,10 @@ body {
   .tech-tag {
     font-size: 0.75rem;
     padding: 0.375rem 0.75rem;
+  }
+  
+  .scroll-indicator span {
+    font-size: 1.25rem;
   }
 }
   
