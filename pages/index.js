@@ -137,6 +137,7 @@ export default function Home() {
               <li><button onClick={() => window.scrollToSection?.('why')}>Hvorfor oss</button></li>
               <li><button onClick={() => window.scrollToSection?.('portfolio')}>Portefølje</button></li>
               <li><button onClick={() => window.scrollToSection?.('pricing')}>Priser</button></li>
+              <li><button onClick={() => window.scrollToSection?.('about')}>Om oss</button></li>
               <li><button onClick={() => window.toggleContactPopup?.()}>Kontakt oss</button></li>
             </ul>
           </nav>
@@ -151,15 +152,20 @@ export default function Home() {
         <section id="home" className="hero">
           <div className="container">
             <div className="hero-content">
-              <span className="hero-tag">Automatisering & Digitale Løsninger</span>
+              <span className="hero-tag">🚀 MVP på 1 dag • Rask utvikling • Norske bedrifter</span>
               <h1>Mer tid til det som betyr mest</h1>
               <p>
-                Vi hjelper deg med å automatisere prosesser og skape digitale løsninger som frigjør tiden din. 
-                La teknologien jobbe for deg, slik at du kan fokusere på å vokse.
+                Vi leverer lynraske digitale løsninger som automatiserer prosesser og frigjør tiden din. 
+                <strong> MVP på kun én dag på forespørsel</strong> - vi gjør endringer raskt mens andre planlegger.
               </p>
-              <button className="hero-cta" onClick={() => window.scrollToSection?.('portfolio')}>
-                Se våre løsninger
-              </button>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+                <button className="hero-cta" onClick={() => window.toggleContactPopup?.()}>
+                  Få gratis konsultasjon
+                </button>
+                <button className="hero-cta-secondary" onClick={() => window.scrollToSection?.('portfolio')}>
+                  Se våre løsninger
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -177,20 +183,20 @@ export default function Home() {
 
             <div className="features-grid">
               <div className="feature-card animate-on-scroll fade-in-up-delay-1">
-                <div className="feature-icon">🚀</div>
-                <h3>Skreddersydde løsninger</h3>
+                <div className="feature-icon">⚡</div>
+                <h3>Lynrask levering</h3>
                 <p>
-                  Hver løsning tilpasses dine spesifikke behov og utfordringer. 
-                  Vi lytter, forstår og leverer nøyaktig det du trenger.
+                  <strong>MVP på 1 dag på forespørsel!</strong> Mens andre bruker uker på planlegging, 
+                  leverer vi funksjonelle løsninger umiddelbart. Raske iterasjoner og endringer er vår superkraft.
                 </p>
               </div>
 
               <div className="feature-card animate-on-scroll fade-in-up-delay-2">
-                <div className="feature-icon">⚡</div>
-                <h3>Effektiv automatisering</h3>
+                <div className="feature-icon">🚀</div>
+                <h3>Skreddersydde løsninger</h3>
                 <p>
-                  Spar opptil 95% av tiden på repeterende oppgaver. 
-                  La AI og automatisering gjøre jobben mens du fokuserer på vekst.
+                  Hver løsning tilpasses dine spesifikke behov og utfordringer. 
+                  Vi lytter, forstår og leverer nøyaktig det du trenger - raskt og effektivt.
                 </p>
               </div>
 
@@ -607,6 +613,133 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Team/About Section */}
+        <section id="about" className="section section-light">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Møt teamet bak TechFlow</h2>
+              <p className="section-description">
+                Vi er et dedikert team av utviklere og automatiseringseksperter som brenner for 
+                å hjelpe norske bedrifter med å vokse gjennom smart teknologi.
+              </p>
+            </div>
+
+            <div className="team-grid">
+              <div className="team-member animate-on-scroll fade-in-up-delay-1">
+                <div className="team-photo">
+                  <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', width: '100%', height: '250px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>
+                    👨‍💻
+                  </div>
+                </div>
+                <div className="team-info">
+                  <h3>Jakob Buhs</h3>
+                  <p className="team-role">Daglig leder & Gründer</p>
+                  <p className="team-bio">
+                    Spesialist i RPA og AI-automatisering med lidenskap for å levere raske, 
+                    effektive løsninger. Erfaring fra å skalere bedrifter fra NOK 30M til 140M+.
+                  </p>
+                  <div className="team-contact">
+                    <a href="mailto:jakob@jbuhs.no">📧 jakob@jbuhs.no</a>
+                    <a href="tel:+4795498228">📞 954 98 228</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="company-stats animate-on-scroll" style={{ marginTop: '4rem', textAlign: 'center' }}>
+              <h3 style={{ fontSize: '1.75rem', marginBottom: '2rem', color: 'var(--text-dark)' }}>
+                Hvorfor velge oss?
+              </h3>
+              <div className="stats-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', maxWidth: '900px', margin: '0 auto' }}>
+                <div>
+                  <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--blue)', marginBottom: '0.5rem' }}>1 dag</div>
+                  <div style={{ color: '#64748b' }}>MVP-levering</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--blue)', marginBottom: '0.5rem' }}>2-3 uker</div>
+                  <div style={{ color: '#64748b' }}>Pilot-resultater</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--blue)', marginBottom: '0.5rem' }}>100%</div>
+                  <div style={{ color: '#64748b' }}>Norsk support</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--blue)', marginBottom: '0.5rem' }}>24/7</div>
+                  <div style={{ color: '#64748b' }}>Tilgjengelighet</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="section section-gradient">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Ofte stilte spørsmål</h2>
+              <p className="section-description">
+                Vi besvarer de vanligste spørsmålene om våre tjenester og prosesser.
+              </p>
+            </div>
+
+            <div className="faq-grid">
+              <div className="faq-item animate-on-scroll fade-in-up-delay-1">
+                <h3>Hvor raskt kan vi se resultater?</h3>
+                <p>
+                  Vi kan levere en fungerende MVP på én dag på forespørsel! Pilot-prosjekter viser 
+                  målbare resultater i løpet av 2-3 uker. Fullstendige automatiseringsprogrammer 
+                  leverer ROI innen 3-6 måneder i gjennomsnitt.
+                </p>
+              </div>
+
+              <div className="faq-item animate-on-scroll fade-in-up-delay-2">
+                <h3>Hva koster det å komme i gang?</h3>
+                <p>
+                  Vi har transparente priser fra NOK 50.000 for enkle apper. Kompleksiteten 
+                  varierer basert på dine behov. Vi tilbyr alltid en gratis konsultasjon for å 
+                  gi deg et nøyaktig pristilbud før vi starter.
+                </p>
+              </div>
+
+              <div className="faq-item animate-on-scroll fade-in-up-delay-3">
+                <h3>Hvilken teknisk kunnskap trenger vi?</h3>
+                <p>
+                  Ingen! Vi håndterer all teknisk implementering og gir opplæring slik at ditt 
+                  ikke-tekniske team kan bruke løsningene. Målet vårt er at dere skal eie og 
+                  forstå løsningen.
+                </p>
+              </div>
+
+              <div className="faq-item animate-on-scroll fade-in-up-delay-1">
+                <h3>Hva om det ikke fungerer for vår prosess?</h3>
+                <p>
+                  Vi gjennomfører gratis prosessvurderinger før enhver forpliktelse. Hvis 
+                  automatisering ikke er en god løsning, vil vi si det ærlig. Vi vil heller 
+                  bygge langsiktige relasjoner enn å selge upassende løsninger.
+                </p>
+              </div>
+
+              <div className="faq-item animate-on-scroll fade-in-up-delay-2">
+                <h3>Får vi support etter lansering?</h3>
+                <p>
+                  Ja! Alle prosjekter inkluderer support-periode (3-6 måneder avhengig av pakke). 
+                  Vi tilbyr også månedlig support uten langsiktige kontrakter. Du kan når som helst 
+                  kontakte oss for raske endringer.
+                </p>
+              </div>
+
+              <div className="faq-item animate-on-scroll fade-in-up-delay-3">
+                <h3>Hvor lang tid tar en typisk implementering?</h3>
+                <p>
+                  Enkle apper: 2-4 uker. Avanserte løsninger: 4-8 uker. Enterprise-løsninger: 
+                  8-12 uker. Vi leverer raskt ved å fokusere på MVP først, deretter itererer vi 
+                  basert på tilbakemelding.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="section section-dark">
           <div className="container">
@@ -614,15 +747,23 @@ export default function Home() {
               <h2 className="section-title">Klar for å ta bedriften din til neste nivå?</h2>
               <p className="section-description">
                 La oss skape en skreddersydd løsning som passer perfekt for din bedrift. 
-                Ta kontakt i dag for en uforpliktende prat.
+                Få et fungerende MVP på 1 dag - ta kontakt i dag for en uforpliktende prat.
               </p>
-              <button 
-                className="hero-cta" 
-                onClick={() => window.toggleContactPopup?.()}
-                style={{ marginTop: '2rem' }}
-              >
-                Kontakt oss i dag
-              </button>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+                <button 
+                  className="hero-cta" 
+                  onClick={() => window.toggleContactPopup?.()}
+                >
+                  Book gratis konsultasjon
+                </button>
+                <a 
+                  href="mailto:jakob@jbuhs.no" 
+                  className="hero-cta-secondary"
+                  style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+                >
+                  📧 Send e-post
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -657,23 +798,45 @@ export default function Home() {
         <div className="container">
           <div className="footer-section">
             <h3>TechFlow</h3>
-            <p>Vi utvikler skreddersydde apper og digitale løsninger for fremtidens bedrifter.</p>
+            <p style={{ marginBottom: '1rem' }}>Vi utvikler skreddersydde apper og digitale løsninger for fremtidens bedrifter.</p>
+            <p><strong>🚀 MVP på 1 dag på forespørsel</strong></p>
+            <p>Rask utvikling • Norsk support • Transparente priser</p>
           </div>
           <div className="footer-section">
-            <h3>Driftes av</h3>
-            <p>Miljø-IT AS</p>
-            <p>Org.nr: 992 874 058</p>
+            <h3>Kontakt oss</h3>
+            <p><strong>Daglig leder:</strong> Jakob Buhs</p>
+            <p>📞 <a href="tel:+4795498228" style={{ color: 'rgba(255, 255, 255, 0.8)', textDecoration: 'none' }}>954 98 228</a></p>
+            <p>📧 <a href="mailto:jakob@jbuhs.no" style={{ color: 'rgba(255, 255, 255, 0.8)', textDecoration: 'none' }}>jakob@jbuhs.no</a></p>
+            <p style={{ marginTop: '0.5rem' }}><strong>Responstid:</strong> Innen 24 timer</p>
+            <p><strong>Åpningstider:</strong> Man-Fre 09:00-17:00</p>
           </div>
           <div className="footer-section">
-            <h3>Kontakt</h3>
-            <p>Daglig leder: Jakob Buhs</p>
-            <p>Telefon: 95498228</p>
-            <p>E-post: jakob@jbuhs.no</p>
+            <h3>Firma informasjon</h3>
+            <p><strong>Driftes av:</strong> Miljø-IT AS</p>
+            <p><strong>Org.nr:</strong> 992 874 058</p>
+            <p><strong>Lokasjon:</strong> Norge</p>
+            <div style={{ marginTop: '1rem' }}>
+              <button 
+                onClick={() => window.scrollToSection?.('home')} 
+                style={{ 
+                  background: 'var(--white)', 
+                  color: 'var(--blue)', 
+                  padding: '0.75rem 1.5rem', 
+                  borderRadius: '8px', 
+                  border: 'none', 
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  marginTop: '0.5rem'
+                }}
+              >
+                Tilbake til toppen ↑
+              </button>
+            </div>
           </div>
         </div>
         <div className="footer-bottom">
           <div className="container">
-            <p>© 2025 TechFlow. Alle rettigheter reservert.</p>
+            <p>© 2025 TechFlow. Alle rettigheter reservert. | Lynrask utvikling • MVP på 1 dag</p>
           </div>
         </div>
       </footer>
