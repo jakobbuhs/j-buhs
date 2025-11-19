@@ -407,15 +407,41 @@ body {
 
 .feature-card {
   background: var(--white);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.07),
+    0 12px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  border-color: rgba(30, 58, 138, 0.2);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
 }
 
 .feature-icon {
@@ -487,17 +513,46 @@ body {
   gap: 3rem;
   align-items: center;
   background: var(--white);
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.08),
+    0 16px 32px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.portfolio-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-light), var(--blue));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .portfolio-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-color: var(--blue-light);
+  transform: translateY(-6px);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    0 12px 24px rgba(0, 0, 0, 0.1),
+    0 24px 48px rgba(0, 0, 0, 0.08);
+  border-color: rgba(30, 58, 138, 0.2);
+}
+
+.portfolio-item:hover::before {
+  opacity: 1;
 }
 
 .portfolio-item:nth-child(even) {
@@ -760,28 +815,64 @@ body {
 
 .pricing-card {
   background: var(--white);
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 2.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  border: 2px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .pricing-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
-  border-color: var(--blue-light);
+  transform: translateY(-6px);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.07),
+    0 12px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  border-color: rgba(30, 58, 138, 0.2);
+}
+
+.pricing-card:hover::before {
+  opacity: 0.5;
 }
 
 .pricing-card.featured {
   border: 2px solid var(--blue);
-  box-shadow: 0 10px 40px -5px rgba(30, 58, 138, 0.3);
-  transform: scale(1.05);
+  box-shadow: 
+    0 4px 6px rgba(30, 58, 138, 0.1),
+    0 12px 24px rgba(30, 58, 138, 0.15),
+    0 24px 48px rgba(30, 58, 138, 0.1);
+  transform: scale(1.02);
+  background: linear-gradient(to bottom, var(--white), rgba(30, 58, 138, 0.02));
+}
+
+.pricing-card.featured::before {
+  opacity: 1;
+  height: 5px;
 }
 
 .pricing-card.featured:hover {
-  transform: scale(1.05) translateY(-8px);
+  transform: scale(1.02) translateY(-6px);
+  box-shadow: 
+    0 6px 8px rgba(30, 58, 138, 0.12),
+    0 16px 32px rgba(30, 58, 138, 0.18),
+    0 32px 64px rgba(30, 58, 138, 0.12);
 }
 
 .featured-badge {
@@ -951,15 +1042,41 @@ body {
 
 .faq-item {
   background: var(--white);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.faq-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--blue), var(--blue-light));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 20px 0 0 20px;
 }
 
 .faq-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.07),
+    0 12px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  border-color: rgba(30, 58, 138, 0.2);
+}
+
+.faq-item:hover::before {
+  opacity: 1;
 }
 
 .faq-item h3 {
@@ -1333,6 +1450,18 @@ body.dark-mode .section-description {
 body.dark-mode .feature-card {
   background: #0c1220;
   border: 1px solid #1e293b;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .feature-card:hover {
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 body.dark-mode .feature-card h3 {
@@ -1353,11 +1482,19 @@ body.dark-mode .stat-label {
 
 body.dark-mode .portfolio-item {
   background: #0c1220;
-  border: 2px solid #1e293b;
+  border: 1px solid #1e293b;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 16px 32px rgba(0, 0, 0, 0.15);
 }
 
 body.dark-mode .portfolio-item:hover {
-  border-color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    0 24px 48px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-mode .content-container h3 {
@@ -1393,15 +1530,35 @@ body.dark-mode .tech-tag:hover {
 
 body.dark-mode .pricing-card {
   background: #0c1220;
-  border-color: #1e293b;
+  border: 1px solid #1e293b;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .pricing-card:hover {
-  border-color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 body.dark-mode .pricing-card.featured {
-  border-color: #3b82f6;
+  border: 2px solid #3b82f6;
+  box-shadow: 
+    0 4px 6px rgba(59, 130, 246, 0.2),
+    0 12px 24px rgba(59, 130, 246, 0.15),
+    0 24px 48px rgba(59, 130, 246, 0.1);
+  background: linear-gradient(to bottom, #0c1220, rgba(59, 130, 246, 0.05));
+}
+
+body.dark-mode .pricing-card.featured:hover {
+  box-shadow: 
+    0 6px 8px rgba(59, 130, 246, 0.25),
+    0 16px 32px rgba(59, 130, 246, 0.2),
+    0 32px 64px rgba(59, 130, 246, 0.15);
 }
 
 body.dark-mode .pricing-header {
@@ -1468,6 +1625,18 @@ body.dark-mode .team-contact a:hover {
 body.dark-mode .faq-item {
   background: #0c1220;
   border: 1px solid #1e293b;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .faq-item:hover {
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.4),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 body.dark-mode .faq-item h3 {
@@ -1559,12 +1728,38 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 .calculator-container {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.08),
+    0 16px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+  opacity: 0.3;
 }
 
 body.dark-mode .calculator-container {
   background: #0c1220 !important;
   border: 1px solid #1e293b;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 16px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.dark-mode .calculator-container::before {
+  opacity: 0.5;
 }
 
 body.dark-mode .calculator-container label {

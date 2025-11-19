@@ -335,9 +335,8 @@ export default function Home() {
               maxWidth: '900px', 
               margin: '0 auto', 
               background: 'var(--white)',
-              borderRadius: '20px',
-              padding: '3rem',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+              borderRadius: '24px',
+              padding: '3rem'
             }}>
               {/* Task Time Slider */}
               <div style={{ marginBottom: '2.5rem' }}>
