@@ -152,7 +152,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>TechFlow - App Utvikling & Digitale Løsninger</title>
+        <title>DriftSmart - App Utvikling & Digitale Løsninger</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Vi utvikler skreddersydde apper og digitale løsninger som tar bedriften din til neste nivå. Få din egen app fra 50.000 NOK." />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
@@ -164,7 +164,7 @@ export default function Home() {
       <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <div className="logo" onClick={() => window.scrollToSection?.('home')} style={{ cursor: 'pointer' }}>
-            <img src="/full_size_logo.png" alt="TechFlow Logo" style={{ height: '48px', width: 'auto' }} />
+            <img src="/full_size_logo.png" alt="DriftSmart Logo" style={{ height: '48px', width: 'auto' }} />
           </div>
           <nav>
             <ul>
@@ -213,14 +213,14 @@ export default function Home() {
           <div className="hero-overlay"></div>
           <div className="container">
             <div className="hero-content">
-              <h1 className="hero-headline">Execute the Unknown</h1>
-              <p className="hero-subtitle">Navigate uncertain challenges with expertise in Digital Strategy & Innovation</p>
+              <h1 className="hero-headline">Smarte Løsninger for Moderne Drift</h1>
+              <p className="hero-subtitle">Vi digitaliserer og automatiserer bedriftens arbeidsprosesser med skreddersydde løsninger</p>
               <div className="hero-buttons">
                 <button className="hero-cta-primary" onClick={() => window.toggleContactPopup?.()}>
-                  Start Your Project
+                  Start Ditt Prosjekt
                 </button>
                 <button className="hero-cta-secondary" onClick={() => window.scrollToSection?.('portfolio')}>
-                  View Our Work ↓
+                  Se Våre Løsninger ↓
                 </button>
               </div>
             </div>
@@ -234,7 +234,7 @@ export default function Home() {
         <section id="why" className="section section-gradient">
           <div className="container">
             <div className="section-header animate-on-scroll">
-              <h2 className="section-title">Hvorfor velge J.BUHS?</h2>
+              <h2 className="section-title">Hvorfor velge DriftSmart?</h2>
               <p className="section-description">
                 Vi leverer skreddersydde løsninger som er tilpasset akkurat dine behov. 
                 Med fokus på automatisering, sikkerhet og resultater.
@@ -331,6 +331,114 @@ export default function Home() {
             </div>
 
             <div className="portfolio-grid">
+              {/* iOS POS Shopify App */}
+              <div className="portfolio-item animate-on-scroll">
+                <div className="video-container" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
+                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📱</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>iOS POS System</div>
+                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>Shopify Integrasjon</div>
+                  </div>
+                </div>
+                <div className="content-container">
+                  <div className="project-category">Butikk & E-handel</div>
+                  <h3>iOS POS Shopify App</h3>
+                  <p>
+                    Komplett kassasystem (Point of Sale) for iOS med sømløs Shopify-integrasjon. 
+                    Gjør det mulig for butikker å håndtere salg både i fysisk butikk og online fra én plattform. 
+                    Sanntidssynkronisering av lager, produkter og kundedata.
+                  </p>
+                  <div className="project-metrics">
+                    <div className="metric">
+                      <span className="metric-value">Sanntid</span>
+                      <span className="metric-label">Lagersynkronisering</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">Multi-kanal</span>
+                      <span className="metric-label">Salg håndtering</span>
+                    </div>
+                  </div>
+                  <div className="project-tech">
+                    <span className="tech-tag">iOS/Swift</span>
+                    <span className="tech-tag">Shopify API</span>
+                    <span className="tech-tag">Sanntids Synkronisering</span>
+                    <span className="tech-tag">Betalingsintegrasjon</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dealer Tracker */}
+              <div className="portfolio-item animate-on-scroll">
+                <div className="video-container" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
+                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📊</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>Dealer Tracker</div>
+                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>Forsinkelseshåndtering</div>
+                  </div>
+                </div>
+                <div className="content-container">
+                  <div className="project-category">Forsyningskjedestyring</div>
+                  <h3>Dealer Tracking System</h3>
+                  <p>
+                    Avansert system for å spore og håndtere forsinkelser fra leverandører og dealers. 
+                    Automatisk logging av alle endringer, delay-notifikasjoner, og omfattende rapportering. 
+                    Gir fullstendig oversikt over leverandørkjeden og identifiserer mønstre i forsinkelser.
+                  </p>
+                  <div className="project-metrics">
+                    <div className="metric">
+                      <span className="metric-value">Auto</span>
+                      <span className="metric-label">Endringslogging</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">Sanntid</span>
+                      <span className="metric-label">Varsler</span>
+                    </div>
+                  </div>
+                  <div className="project-tech">
+                    <span className="tech-tag">React</span>
+                    <span className="tech-tag">Node.js</span>
+                    <span className="tech-tag">Sanntids Oppdateringer</span>
+                    <span className="tech-tag">Analyseverktøy</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* PowerOffice Bookkeeping App */}
+              <div className="portfolio-item animate-on-scroll">
+                <div className="video-container" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
+                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📝</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>Automatisk Regnskap</div>
+                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>PowerOffice Integrasjon</div>
+                  </div>
+                </div>
+                <div className="content-container">
+                  <div className="project-category">Økonomi & Regnskap</div>
+                  <h3>PowerOffice AI Bilagsføring</h3>
+                  <p>
+                    Intelligent regnskapsløsning som automatiserer bilagsføring i PowerOffice. 
+                    AI-drevet system som kategoriserer transaksjoner, validerer data og fører bilag 
+                    automatisk i riktig konto. Reduserer regnskapsarbeid fra timer til minutter.
+                  </p>
+                  <div className="project-metrics">
+                    <div className="metric">
+                      <span className="metric-value">90%</span>
+                      <span className="metric-label">Mindre manuelt arbeid</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">100%</span>
+                      <span className="metric-label">Nøyaktighet</span>
+                    </div>
+                  </div>
+                  <div className="project-tech">
+                    <span className="tech-tag">PowerOffice API</span>
+                    <span className="tech-tag">AI Klassifisering</span>
+                    <span className="tech-tag">Automatisering</span>
+                    <span className="tech-tag">Validering</span>
+                  </div>
+                </div>
+              </div>
+
               {/* Gmail Automation */}
               <div className="portfolio-item animate-on-scroll">
                 <div className="video-container">
@@ -360,7 +468,7 @@ export default function Home() {
                   <div className="project-tech">
                     <span className="tech-tag">AI/ML</span>
                     <span className="tech-tag">Gmail API</span>
-                    <span className="tech-tag">Natural Language Processing</span>
+                    <span className="tech-tag">Naturlig Språkbehandling</span>
                   </div>
                 </div>
               </div>
@@ -394,115 +502,7 @@ export default function Home() {
                   <div className="project-tech">
                     <span className="tech-tag">AI/GPT</span>
                     <span className="tech-tag">SEO Optimalisering</span>
-                    <span className="tech-tag">Bulk Processing</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* iOS POS Shopify App */}
-              <div className="portfolio-item animate-on-scroll">
-                <div className="video-container" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
-                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
-                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📱</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>iOS POS System</div>
-                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>Shopify Integration</div>
-                  </div>
-                </div>
-                <div className="content-container">
-                  <div className="project-category">Retail & E-handel</div>
-                  <h3>iOS POS Shopify App</h3>
-                  <p>
-                    Komplett kassasystem (Point of Sale) for iOS med sømløs Shopify-integrasjon. 
-                    Gjør det mulig for butikker å håndtere salg både i fysisk butikk og online fra én plattform. 
-                    Sanntidssynkronisering av lager, produkter og kundedata.
-                  </p>
-                  <div className="project-metrics">
-                    <div className="metric">
-                      <span className="metric-value">Sanntid</span>
-                      <span className="metric-label">Lagersynkronisering</span>
-                    </div>
-                    <div className="metric">
-                      <span className="metric-value">Multi-kanal</span>
-                      <span className="metric-label">Salg håndtering</span>
-                    </div>
-                  </div>
-                  <div className="project-tech">
-                    <span className="tech-tag">iOS/Swift</span>
-                    <span className="tech-tag">Shopify API</span>
-                    <span className="tech-tag">Real-time Sync</span>
-                    <span className="tech-tag">Payment Integration</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Dealer Tracker */}
-              <div className="portfolio-item animate-on-scroll">
-                <div className="video-container" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
-                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
-                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📊</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>Dealer Tracker</div>
-                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>Delay Management System</div>
-                  </div>
-                </div>
-                <div className="content-container">
-                  <div className="project-category">Supply Chain Management</div>
-                  <h3>Dealer Tracking System</h3>
-                  <p>
-                    Avansert system for å spore og håndtere forsinkelser fra leverandører og dealers. 
-                    Automatisk logging av alle endringer, delay-notifikasjoner, og omfattende rapportering. 
-                    Gir fullstendig oversikt over leverandørkjeden og identifiserer mønstre i forsinkelser.
-                  </p>
-                  <div className="project-metrics">
-                    <div className="metric">
-                      <span className="metric-value">Auto</span>
-                      <span className="metric-label">Change logging</span>
-                    </div>
-                    <div className="metric">
-                      <span className="metric-value">Real-time</span>
-                      <span className="metric-label">Varsler</span>
-                    </div>
-                  </div>
-                  <div className="project-tech">
-                    <span className="tech-tag">React</span>
-                    <span className="tech-tag">Node.js</span>
-                    <span className="tech-tag">Real-time Updates</span>
-                    <span className="tech-tag">Analytics</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* PowerOffice Bookkeeping App */}
-              <div className="portfolio-item animate-on-scroll">
-                <div className="video-container" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '300px' }}>
-                  <div style={{ textAlign: 'center', color: 'white', padding: '2rem' }}>
-                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📝</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>Automatisk Regnskap</div>
-                    <div style={{ fontSize: '1rem', marginTop: '0.5rem', opacity: '0.9' }}>PowerOffice Integration</div>
-                  </div>
-                </div>
-                <div className="content-container">
-                  <div className="project-category">Økonomi & Regnskap</div>
-                  <h3>PowerOffice Journal Entry App</h3>
-                  <p>
-                    Intelligent regnskapsløsning som automatiserer bilagsføring i PowerOffice. 
-                    AI-drevet system som kategoriserer transaksjoner, validerer data og fører bilag 
-                    automatisk i riktig konto. Reduserer regnskapsarbeid fra timer til minutter.
-                  </p>
-                  <div className="project-metrics">
-                    <div className="metric">
-                      <span className="metric-value">90%</span>
-                      <span className="metric-label">Mindre manuelt arbeid</span>
-                    </div>
-                    <div className="metric">
-                      <span className="metric-value">100%</span>
-                      <span className="metric-label">Nøyaktighet</span>
-                    </div>
-                  </div>
-                  <div className="project-tech">
-                    <span className="tech-tag">PowerOffice API</span>
-                    <span className="tech-tag">AI Classification</span>
-                    <span className="tech-tag">Automation</span>
-                    <span className="tech-tag">Validation</span>
+                    <span className="tech-tag">Massebehandling</span>
                   </div>
                 </div>
               </div>
@@ -673,7 +673,7 @@ export default function Home() {
         <section id="about" className="section section-light">
           <div className="container">
             <div className="section-header animate-on-scroll">
-              <h2 className="section-title">Møt teamet bak TechFlow</h2>
+              <h2 className="section-title">Møt teamet bak DriftSmart</h2>
               <p className="section-description">
                 Vi er et dedikert team av utviklere og automatiseringseksperter som brenner for 
                 å hjelpe norske bedrifter med å vokse gjennom smart teknologi.
@@ -854,7 +854,7 @@ export default function Home() {
         <div className="container">
           <div className="footer-section">
             <div style={{ marginBottom: '1rem' }}>
-              <img src="/full_size_logo.png" alt="TechFlow Logo" style={{ height: '32px', width: 'auto' }} />
+              <img src="/full_size_logo.png" alt="DriftSmart Logo" style={{ height: '32px', width: 'auto' }} />
             </div>
             <p style={{ marginBottom: '1rem' }}>Vi utvikler skreddersydde apper og digitale løsninger for fremtidens bedrifter.</p>
             <p><strong>🚀 MVP på 1 dag på forespørsel</strong></p>
@@ -894,7 +894,7 @@ export default function Home() {
         </div>
         <div className="footer-bottom">
           <div className="container">
-            <p>© 2025 TechFlow. Alle rettigheter reservert. | Lynrask utvikling • MVP på 1 dag</p>
+            <p>© 2025 DriftSmart. Alle rettigheter reservert. | Lynrask utvikling • MVP på 1 dag</p>
           </div>
         </div>
       </footer>
