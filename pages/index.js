@@ -25,18 +25,9 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Handle scroll effect for navbar and parallax
+    // Handle scroll effect for navbar
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
-      // Parallax effect for hero content
-      const heroContent = document.querySelector('.hero-content');
-      if (heroContent) {
-        const scrolled = window.pageYOffset;
-        const parallaxSpeed = 0.5;
-        heroContent.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
-        heroContent.style.opacity = 1 - (scrolled / 600);
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -67,25 +58,30 @@ export default function Home() {
 
     // Intersection Observer for fade-in animations
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Add class with a slight delay to prevent jarring transitions
+          requestAnimationFrame(() => {
           entry.target.classList.add('fade-in-up');
           observer.unobserve(entry.target);
+          });
         }
       });
     }, observerOptions);
 
-    // Observe all sections
+    // Observe all sections with better timing
     setTimeout(() => {
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        // Set initial state to prevent flash
+        el.style.willChange = 'transform, opacity';
         observer.observe(el);
       });
-    }, 100);
+    }, 300);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -211,7 +207,7 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <section id="home" className="hero">
-          <video autoPlay loop muted playsInline className="hero-video" poster="/favicon.webp">
+          <video autoPlay loop muted playsInline className="hero-video" poster="/northern_lights.png">
             <source src="/northern_lights.mp4" type="video/mp4" />
             {/* Add your atmospheric video here - replace the source above with your video file */}
           </video>
@@ -597,7 +593,7 @@ export default function Home() {
                 Vi tror på åpenhet. Her er våre startpriser for ulike typer løsninger. 
                 Kontakt oss for et skreddersydd tilbud tilpasset dine behov.
               </p>
-            </div>
+                    </div>
 
             <div className="pricing-grid">
               <div className="pricing-card animate-on-scroll fade-in-up-delay-1">
@@ -606,8 +602,8 @@ export default function Home() {
                   <div className="price">
                     <span className="price-amount">50.000,-</span>
                     <span className="price-period">fra</span>
+                    </div>
                   </div>
-                </div>
                 <ul className="pricing-features">
                   <li>✓ Grunnleggende funksjonalitet</li>
                   <li>✓ Responsivt design</li>
@@ -619,7 +615,7 @@ export default function Home() {
                 <button className="pricing-cta" onClick={() => window.toggleContactPopup?.()}>
                   Få tilbud
                 </button>
-              </div>
+                  </div>
 
               <div className="pricing-card featured animate-on-scroll fade-in-up-delay-2">
                 <div className="featured-badge">Mest populær</div>
@@ -628,7 +624,7 @@ export default function Home() {
                   <div className="price">
                     <span className="price-amount">150.000,-</span>
                     <span className="price-period">fra</span>
-                  </div>
+                </div>
                 </div>
                 <ul className="pricing-features">
                   <li>✓ Alt i Enkel App</li>
@@ -651,8 +647,8 @@ export default function Home() {
                   <div className="price">
                     <span className="price-amount">Tilpasset</span>
                     <span className="price-period">pris</span>
-                  </div>
                 </div>
+                    </div>
                 <ul className="pricing-features">
                   <li>✓ Alt i Avansert App</li>
                   <li>✓ Skreddersydd arkitektur</li>
@@ -666,16 +662,16 @@ export default function Home() {
                 <button className="pricing-cta" onClick={() => window.toggleContactPopup?.()}>
                   Kontakt oss
                 </button>
-              </div>
-            </div>
+                    </div>
+                  </div>
 
             <div className="pricing-note animate-on-scroll" style={{ marginTop: '3rem', textAlign: 'center' }}>
               <p style={{ fontSize: '1rem', color: '#64748b', maxWidth: '600px', margin: '0 auto' }}>
                 <strong>Merk:</strong> Alle priser er startpriser og kan variere basert på kompleksitet, 
                 funksjonalitet og dine spesifikke behov. Kontakt oss for et nøyaktig tilbud.
               </p>
-            </div>
-          </div>
+                  </div>
+                </div>
         </section>
 
         {/* Portfolio Section */}
@@ -687,7 +683,7 @@ export default function Home() {
                 Vi har utviklet skreddersydde løsninger for ulike bransjer - fra e-handel til regnskap. 
                 Hver app er bygget med fokus på automatisering, effektivitet og brukervennlighet.
               </p>
-            </div>
+              </div>
 
             <div className="portfolio-grid">
               {/* iOS POS Shopify App */}
