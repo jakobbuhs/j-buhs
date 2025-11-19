@@ -160,16 +160,16 @@ export default function Home() {
         <title>DriftSmart - App Utvikling & Digitale Løsninger</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Vi utvikler skreddersydde apper og digitale løsninger som tar bedriften din til neste nivå. Få din egen app fra 50.000 NOK." />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
-        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.webp" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.webp" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.webp" />
+        <link rel="shortcut icon" href="/favicon.webp" />
       </Head>
 
       <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <div className="logo" onClick={() => window.scrollToSection?.('home')} style={{ cursor: 'pointer' }}>
-            <img src="/full_size_logo.png" alt="DriftSmart Logo" style={{ height: '48px', width: 'auto' }} />
+            <img src="/full_size_logo.webp" alt="DriftSmart Logo" style={{ height: '48px', width: 'auto' }} />
           </div>
           <nav>
             <ul>
@@ -211,7 +211,7 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <section id="home" className="hero">
-          <video autoPlay loop muted playsInline className="hero-video" poster="/favicon.png">
+          <video autoPlay loop muted playsInline className="hero-video" poster="/favicon.webp">
             <source src="/northern_lights.mp4" type="video/mp4" />
             {/* Add your atmospheric video here - replace the source above with your video file */}
           </video>
@@ -1123,7 +1123,7 @@ export default function Home() {
         <div className="container">
           <div className="footer-section">
             <div style={{ marginBottom: '1rem' }}>
-              <img src="/full_size_logo.png" alt="DriftSmart Logo" style={{ height: '32px', width: 'auto' }} />
+              <img src="/full_size_logo.webp" alt="DriftSmart Logo" style={{ height: '32px', width: 'auto' }} />
             </div>
             <p style={{ marginBottom: '1rem' }}>Vi utvikler skreddersydde apper og digitale løsninger for fremtidens bedrifter.</p>
             <p><strong>🚀 MVP på 1 dag på forespørsel</strong></p>
