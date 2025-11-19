@@ -1165,7 +1165,7 @@ body {
   }
 
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 
@@ -1250,5 +1250,249 @@ body {
   .scroll-indicator span {
     font-size: 1.25rem;
   }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark-mode .navbar.scrolled {
+  background: rgba(15, 23, 42, 0.98);
+  border-bottom: 1px solid #334155;
+}
+
+body.dark-mode .navbar.scrolled .logo,
+body.dark-mode .navbar.scrolled .logo h1 {
+  color: #60a5fa;
+}
+
+body.dark-mode .navbar.scrolled nav ul li button {
+  color: #e2e8f0;
+}
+
+body.dark-mode .navbar.scrolled nav ul li button:hover {
+  color: #60a5fa;
+}
+
+body.dark-mode .navbar.scrolled nav ul li button::after {
+  background: #60a5fa;
+}
+
+body.dark-mode .navbar.scrolled nav ul li:last-child button {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+body.dark-mode .navbar.scrolled nav ul li:last-child button:hover {
+  background: #2563eb;
+}
+
+body.dark-mode .navbar.scrolled .mobile-menu-toggle {
+  color: #e2e8f0;
+}
+
+body.dark-mode .dark-mode-toggle {
+  border-color: #60a5fa !important;
+}
+
+body.dark-mode .section-light {
+  background: #1e293b;
+}
+
+body.dark-mode .section-gradient {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+body.dark-mode .section-title {
+  color: #e2e8f0;
+}
+
+body.dark-mode .section-description {
+  color: #94a3b8;
+}
+
+body.dark-mode .feature-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+
+body.dark-mode .feature-card h3 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .feature-card p {
+  color: #94a3b8;
+}
+
+body.dark-mode .stat-number {
+  color: #60a5fa;
+}
+
+body.dark-mode .stat-label {
+  color: #94a3b8;
+}
+
+body.dark-mode .portfolio-item {
+  background: #1e293b;
+  border: 2px solid #334155;
+}
+
+body.dark-mode .portfolio-item:hover {
+  border-color: #60a5fa;
+}
+
+body.dark-mode .content-container h3 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .content-container p {
+  color: #94a3b8;
+}
+
+body.dark-mode .project-metrics {
+  background: #0f172a;
+}
+
+body.dark-mode .metric-value {
+  color: #60a5fa;
+}
+
+body.dark-mode .metric-label {
+  color: #94a3b8;
+}
+
+body.dark-mode .tech-tag {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+body.dark-mode .tech-tag:hover {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+body.dark-mode .pricing-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark-mode .pricing-card:hover {
+  border-color: #60a5fa;
+}
+
+body.dark-mode .pricing-card.featured {
+  border-color: #3b82f6;
+}
+
+body.dark-mode .pricing-header {
+  border-bottom: 2px solid #334155;
+}
+
+body.dark-mode .pricing-header h3 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .price-amount {
+  color: #60a5fa;
+}
+
+body.dark-mode .price-period {
+  color: #94a3b8;
+}
+
+body.dark-mode .pricing-features li {
+  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+}
+
+body.dark-mode .pricing-cta {
+  background: #0f172a;
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+
+body.dark-mode .pricing-cta:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+body.dark-mode .pricing-cta.primary {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+body.dark-mode .pricing-cta.primary:hover {
+  background: #2563eb;
+}
+
+body.dark-mode .team-info h3 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .team-role {
+  color: #60a5fa;
+}
+
+body.dark-mode .team-bio {
+  color: #94a3b8;
+}
+
+body.dark-mode .team-contact a {
+  color: #60a5fa;
+}
+
+body.dark-mode .team-contact a:hover {
+  color: #3b82f6;
+}
+
+body.dark-mode .faq-item {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+
+body.dark-mode .faq-item h3 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .faq-item p {
+  color: #94a3b8;
+}
+
+body.dark-mode .popup-content {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+
+body.dark-mode .popup-content h2 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .popup-content label {
+  color: #e2e8f0;
+}
+
+body.dark-mode .popup-content input,
+body.dark-mode .popup-content textarea {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+body.dark-mode .popup-content input:focus,
+body.dark-mode .popup-content textarea:focus {
+  border-color: #60a5fa;
+}
+
+body.dark-mode .close-popup {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+body.dark-mode .close-popup:hover {
+  background: #3b82f6;
+  color: #ffffff;
 }
   

@@ -8,6 +8,16 @@ export default function Home() {
     isError: false
   });
   const [scrolled, setScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Load dark mode preference from localStorage
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(savedDarkMode);
+    if (savedDarkMode) {
+      document.body.classList.add('dark-mode');
+    }
+  }, []);
 
   useEffect(() => {
     // Handle scroll effect for navbar and parallax
@@ -77,6 +87,17 @@ export default function Home() {
       observer.disconnect();
     };
   }, []);
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', newDarkMode.toString());
+    if (newDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -155,6 +176,27 @@ export default function Home() {
               <li><button onClick={() => window.toggleContactPopup?.()}>Kontakt oss</button></li>
             </ul>
           </nav>
+          <button 
+            className="dark-mode-toggle" 
+            onClick={toggleDarkMode}
+            aria-label="Toggle dark mode"
+            style={{
+              background: 'transparent',
+              border: '2px solid var(--blue)',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              fontSize: '1.2rem',
+              marginLeft: '1rem',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            {darkMode ? '☀️' : '🌙'}
+          </button>
           <button className="mobile-menu-toggle" aria-label="Meny">
             ☰
           </button>
@@ -260,11 +302,7 @@ export default function Home() {
         {/* Stats Section */}
         <section className="section section-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
           <div className="container">
-            <div className="stats-grid animate-on-scroll">
-              <div className="stat-item">
-                <div className="stat-number">5+</div>
-                <div className="stat-label">Apper utviklet</div>
-              </div>
+            <div className="stats-grid animate-on-scroll" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', maxWidth: '900px', margin: '0 auto' }}>
               <div className="stat-item">
                 <div className="stat-number">95%</div>
                 <div className="stat-label">Tidsbesparelse</div>
