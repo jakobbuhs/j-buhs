@@ -807,7 +807,7 @@ export default function Home() {
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
                 <button 
-                  className="hero-cta" 
+                  className="hero-cta-primary" 
                   onClick={() => window.toggleContactPopup?.()}
                 >
                   Book gratis konsultasjon
