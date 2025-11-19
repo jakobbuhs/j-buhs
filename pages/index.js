@@ -9,6 +9,11 @@ export default function Home() {
   });
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [calculatorValues, setCalculatorValues] = useState({
+    taskTime: 1, // hours
+    employeeValue: 800, // kr per hour
+    numberOfEmployees: 1
+  });
 
   useEffect(() => {
     // Load dark mode preference from localStorage
@@ -319,11 +324,275 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Savings Calculator Section */}
+        <section className="section section-gradient">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Beregn din potensielle besparelse</h2>
+              <p className="section-description">
+                Se hvor mye du kan spare ved å automatisere repetetive oppgaver. 
+                Juster verdiene nedenfor for å se beregnet besparelse.
+              </p>
+            </div>
+
+            <div className="calculator-container animate-on-scroll" style={{ 
+              maxWidth: '900px', 
+              margin: '0 auto', 
+              background: 'var(--white)',
+              borderRadius: '20px',
+              padding: '3rem',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+            }}>
+              {/* Task Time Slider */}
+              <div style={{ marginBottom: '2.5rem' }}>
+                <label style={{ 
+                  display: 'block', 
+                  fontSize: '1.125rem', 
+                  fontWeight: '600', 
+                  marginBottom: '1rem',
+                  color: 'var(--text-dark)'
+                }}>
+                  Hvor lang tid tar en repetetiv oppgave? 
+                  <span style={{ 
+                    fontSize: '1.5rem', 
+                    fontWeight: '800', 
+                    color: 'var(--blue)', 
+                    marginLeft: '1rem' 
+                  }}>
+                    {calculatorValues.taskTime.toFixed(1)} timer
+                  </span>
+                </label>
+                <input
+                  type="range"
+                  min="0.5"
+                  max="40"
+                  step="0.5"
+                  value={calculatorValues.taskTime}
+                  onChange={(e) => setCalculatorValues({...calculatorValues, taskTime: parseFloat(e.target.value)})}
+                  style={{
+                    width: '100%',
+                    height: '8px',
+                    borderRadius: '5px',
+                    background: 'var(--gray)',
+                    outline: 'none',
+                    cursor: 'pointer'
+                  }}
+                />
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.875rem', color: '#64748b' }}>
+                  <span>0.5 timer</span>
+                  <span>40 timer</span>
+                </div>
+              </div>
+
+              {/* Employee Value Slider */}
+              <div style={{ marginBottom: '2.5rem' }}>
+                <label style={{ 
+                  display: 'block', 
+                  fontSize: '1.125rem', 
+                  fontWeight: '600', 
+                  marginBottom: '1rem',
+                  color: 'var(--text-dark)'
+                }}>
+                  Produktiv verdi per ansatt per time
+                  <span style={{ 
+                    fontSize: '1.5rem', 
+                    fontWeight: '800', 
+                    color: 'var(--blue)', 
+                    marginLeft: '1rem' 
+                  }}>
+                    {calculatorValues.employeeValue.toLocaleString('no-NO')} kr/time
+                  </span>
+                </label>
+                <input
+                  type="range"
+                  min="400"
+                  max="2000"
+                  step="50"
+                  value={calculatorValues.employeeValue}
+                  onChange={(e) => setCalculatorValues({...calculatorValues, employeeValue: parseInt(e.target.value)})}
+                  style={{
+                    width: '100%',
+                    height: '8px',
+                    borderRadius: '5px',
+                    background: 'var(--gray)',
+                    outline: 'none',
+                    cursor: 'pointer'
+                  }}
+                />
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.875rem', color: '#64748b' }}>
+                  <span>400 kr/time</span>
+                  <span>2000 kr/time</span>
+                </div>
+              </div>
+
+              {/* Number of Employees Slider */}
+              <div style={{ marginBottom: '2.5rem' }}>
+                <label style={{ 
+                  display: 'block', 
+                  fontSize: '1.125rem', 
+                  fontWeight: '600', 
+                  marginBottom: '1rem',
+                  color: 'var(--text-dark)'
+                }}>
+                  Hvor mange ansatte påvirkes av denne løsningen?
+                  <span style={{ 
+                    fontSize: '1.5rem', 
+                    fontWeight: '800', 
+                    color: 'var(--blue)', 
+                    marginLeft: '1rem' 
+                  }}>
+                    {calculatorValues.numberOfEmployees} ansatte
+                  </span>
+                </label>
+                <input
+                  type="range"
+                  min="1"
+                  max="50"
+                  step="1"
+                  value={calculatorValues.numberOfEmployees}
+                  onChange={(e) => setCalculatorValues({...calculatorValues, numberOfEmployees: parseInt(e.target.value)})}
+                  style={{
+                    width: '100%',
+                    height: '8px',
+                    borderRadius: '5px',
+                    background: 'var(--gray)',
+                    outline: 'none',
+                    cursor: 'pointer'
+                  }}
+                />
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.875rem', color: '#64748b' }}>
+                  <span>1 ansatt</span>
+                  <span>50 ansatte</span>
+                </div>
+              </div>
+
+              {/* Calculations */}
+              {(() => {
+                // Assuming tasks are done daily (5 days a week, ~22 working days per month)
+                const tasksPerMonth = 22; // working days
+                const hoursSavedPerMonth = calculatorValues.taskTime * tasksPerMonth * calculatorValues.numberOfEmployees;
+                const monthlySavings = hoursSavedPerMonth * calculatorValues.employeeValue;
+                const serviceCost = 150000;
+                const monthsToRecoup = monthlySavings > 0 ? (serviceCost / monthlySavings) : 0;
+                const annualSavings = monthlySavings * 12;
+
+                return (
+                    <div className="calculator-results" style={{
+                      borderRadius: '16px',
+                      padding: '2.5rem',
+                      marginTop: '2rem'
+                    }}>
+                      <h3 style={{ 
+                        fontSize: '1.5rem', 
+                        fontWeight: '700', 
+                        marginBottom: '1.5rem',
+                        color: 'var(--text-dark)',
+                        textAlign: 'center'
+                      }}>
+                        Din estimerte besparelse
+                      </h3>
+                      <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                        gap: '1.5rem',
+                        marginBottom: '2rem'
+                      }}>
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ 
+                            fontSize: '2.5rem', 
+                            fontWeight: '800', 
+                            color: 'var(--blue)',
+                            marginBottom: '0.5rem'
+                          }}>
+                            {hoursSavedPerMonth.toFixed(0)}
+                          </div>
+                          <div className="calculator-label" style={{ fontSize: '0.95rem' }}>
+                            Timer spart per måned
+                          </div>
+                        </div>
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ 
+                            fontSize: '2.5rem', 
+                            fontWeight: '800', 
+                            color: '#10b981',
+                            marginBottom: '0.5rem'
+                          }}>
+                            {monthlySavings.toLocaleString('no-NO')} kr
+                          </div>
+                          <div className="calculator-label" style={{ fontSize: '0.95rem' }}>
+                            Månedlig besparelse
+                          </div>
+                        </div>
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ 
+                            fontSize: '2.5rem', 
+                            fontWeight: '800', 
+                            color: '#10b981',
+                            marginBottom: '0.5rem'
+                          }}>
+                            {annualSavings.toLocaleString('no-NO')} kr
+                          </div>
+                          <div className="calculator-label" style={{ fontSize: '0.95rem' }}>
+                            Årlig besparelse
+                          </div>
+                        </div>
+                      </div>
+                      <div className="calculator-investment-box" style={{
+                        background: 'var(--white)',
+                        borderRadius: '12px',
+                        padding: '1.5rem',
+                        border: '2px solid var(--blue)'
+                      }}>
+                        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                          <div className="calculator-label" style={{ 
+                            fontSize: '1.25rem', 
+                            fontWeight: '600', 
+                            marginBottom: '0.5rem'
+                          }}>
+                            Investering: 150.000 kr
+                          </div>
+                          <div style={{ 
+                            fontSize: '2rem', 
+                            fontWeight: '800', 
+                            color: 'var(--blue)'
+                          }}>
+                            {monthsToRecoup > 0 && monthsToRecoup < 1000 ? (
+                              <>
+                                {monthsToRecoup < 1 
+                                  ? `${Math.ceil(monthsToRecoup * 30)} dager` 
+                                  : monthsToRecoup < 12
+                                  ? `${monthsToRecoup.toFixed(1)} måneder`
+                                  : `${(monthsToRecoup / 12).toFixed(1)} år`
+                                } til tilbakebetaling
+                              </>
+                            ) : (
+                              'Beregning ikke tilgjengelig'
+                            )}
+                          </div>
+                        </div>
+                        {monthsToRecoup > 0 && monthsToRecoup < 12 && (
+                          <div style={{
+                            textAlign: 'center',
+                            fontSize: '0.95rem',
+                            color: '#10b981',
+                            fontWeight: '600'
+                          }}>
+                            ✓ Din investering betaler seg tilbake i løpet av {monthsToRecoup < 1 ? 'første måned' : 'året'}!
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                );
+              })()}
+            </div>
+          </div>
+        </section>
+
         {/* Portfolio Section */}
         <section id="portfolio" className="section section-gradient">
           <div className="container">
             <div className="section-header animate-on-scroll">
-              <h2 className="section-title">Våre løsninger</h2>
+              <h2 className="section-title">Noen av løsnignene vi har laget for våre kunder</h2>
               <p className="section-description">
                 Vi har utviklet skreddersydde løsninger for ulike bransjer - fra e-handel til regnskap. 
                 Hver app er bygget med fokus på automatisering, effektivitet og brukervennlighet.
@@ -691,7 +960,7 @@ export default function Home() {
                   <h3>Jakob Buhs</h3>
                   <p className="team-role">Daglig leder & Gründer</p>
                   <p className="team-bio">
-                    Spesialist i RPA og AI-automatisering med lidenskap for å levere raske, 
+                    Dataingeniør: Spesialist i RPA og AI-automatisering med lidenskap for å levere raske, 
                     effektive løsninger. Erfaring fra å skalere bedrifter fra NOK 30M til 140M+.
                   </p>
                   <div className="team-contact">

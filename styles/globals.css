@@ -1495,4 +1495,102 @@ body.dark-mode .close-popup:hover {
   background: #3b82f6;
   color: #ffffff;
 }
+
+/* Calculator Section */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: var(--gray);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--blue);
+  cursor: pointer;
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(30, 58, 138, 0.4);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--blue);
+  cursor: pointer;
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(30, 58, 138, 0.4);
+}
+
+.calculator-container {
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .calculator-container {
+  background: #0c1220 !important;
+  border: 1px solid #1e293b;
+}
+
+body.dark-mode .calculator-container label {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode input[type="range"] {
+  background: #1e293b;
+}
+
+body.dark-mode input[type="range"]::-webkit-slider-thumb {
+  background: #60a5fa;
+  border-color: #0c1220;
+}
+
+body.dark-mode input[type="range"]::-moz-range-thumb {
+  background: #60a5fa;
+  border-color: #0c1220;
+}
+
+.calculator-results {
+  background: linear-gradient(135deg, #f0f9ff, #e0e7ff);
+}
+
+body.dark-mode .calculator-results {
+  background: linear-gradient(135deg, #0c1220, #1e293b);
+}
+
+.calculator-label {
+  color: #64748b;
+}
+
+body.dark-mode .calculator-label {
+  color: #94a3b8;
+}
+
+body.dark-mode .calculator-results h3 {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .calculator-investment-box {
+  background: #0c1220 !important;
+  border-color: #3b82f6 !important;
+}
+
   
