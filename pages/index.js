@@ -230,7 +230,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="scroll-indicator">
+          <div className="scroll-indicator" onClick={() => window.scrollToSection?.('calculator')} style={{ cursor: 'pointer' }}>
             <span>↓</span>
           </div>
         </section>
@@ -325,7 +325,7 @@ export default function Home() {
         </section>
 
         {/* Savings Calculator Section */}
-        <section className="section section-gradient">
+        <section id="calculator" className="section section-gradient">
           <div className="container">
             <div className="section-header animate-on-scroll">
               <h2 className="section-title">Beregn din potensielle besparelse</h2>
@@ -588,6 +588,96 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Pricing Section */}
+        <section id="pricing" className="section section-gradient">
+          <div className="container">
+            <div className="section-header animate-on-scroll">
+              <h2 className="section-title">Transparente priser</h2>
+              <p className="section-description">
+                Vi tror på åpenhet. Her er våre startpriser for ulike typer løsninger. 
+                Kontakt oss for et skreddersydd tilbud tilpasset dine behov.
+              </p>
+            </div>
+
+            <div className="pricing-grid">
+              <div className="pricing-card animate-on-scroll fade-in-up-delay-1">
+                <div className="pricing-header">
+                  <h3>Enkel App</h3>
+                  <div className="price">
+                    <span className="price-amount">50.000,-</span>
+                    <span className="price-period">fra</span>
+                  </div>
+                </div>
+                <ul className="pricing-features">
+                  <li>✓ Grunnleggende funksjonalitet</li>
+                  <li>✓ Responsivt design</li>
+                  <li>✓ Brukervennlig interface</li>
+                  <li>✓ 3 måneders support</li>
+                  <li>✓ Grunnleggende sikkerhet</li>
+                  <li>✓ Deployment</li>
+                </ul>
+                <button className="pricing-cta" onClick={() => window.toggleContactPopup?.()}>
+                  Få tilbud
+                </button>
+              </div>
+
+              <div className="pricing-card featured animate-on-scroll fade-in-up-delay-2">
+                <div className="featured-badge">Mest populær</div>
+                <div className="pricing-header">
+                  <h3>Avansert App</h3>
+                  <div className="price">
+                    <span className="price-amount">150.000,-</span>
+                    <span className="price-period">fra</span>
+                  </div>
+                </div>
+                <ul className="pricing-features">
+                  <li>✓ Alt i Enkel App</li>
+                  <li>✓ Database-integrasjon</li>
+                  <li>✓ API-utvikling</li>
+                  <li>✓ Brukerautentisering</li>
+                  <li>✓ Admin-panel</li>
+                  <li>✓ 6 måneders support</li>
+                  <li>✓ Push-varsler</li>
+                  <li>✓ Analytics-integrasjon</li>
+                </ul>
+                <button className="pricing-cta primary" onClick={() => window.toggleContactPopup?.()}>
+                  Få tilbud
+                </button>
+              </div>
+
+              <div className="pricing-card animate-on-scroll fade-in-up-delay-3">
+                <div className="pricing-header">
+                  <h3>Enterprise-løsning</h3>
+                  <div className="price">
+                    <span className="price-amount">Tilpasset</span>
+                    <span className="price-period">pris</span>
+                  </div>
+                </div>
+                <ul className="pricing-features">
+                  <li>✓ Alt i Avansert App</li>
+                  <li>✓ Skreddersydd arkitektur</li>
+                  <li>✓ Skalerbar infrastruktur</li>
+                  <li>✓ Avansert sikkerhet</li>
+                  <li>✓ Dedikert support</li>
+                  <li>✓ SLA-garantier</li>
+                  <li>✓ Integrasjoner</li>
+                  <li>✓ Continuous deployment</li>
+                </ul>
+                <button className="pricing-cta" onClick={() => window.toggleContactPopup?.()}>
+                  Kontakt oss
+                </button>
+              </div>
+            </div>
+
+            <div className="pricing-note animate-on-scroll" style={{ marginTop: '3rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '1rem', color: '#64748b', maxWidth: '600px', margin: '0 auto' }}>
+                <strong>Merk:</strong> Alle priser er startpriser og kan variere basert på kompleksitet, 
+                funksjonalitet og dine spesifikke behov. Kontakt oss for et nøyaktig tilbud.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Portfolio Section */}
         <section id="portfolio" className="section section-gradient">
           <div className="container">
@@ -844,96 +934,6 @@ export default function Home() {
                   personaliserte meldinger.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section id="pricing" className="section section-gradient">
-          <div className="container">
-            <div className="section-header animate-on-scroll">
-              <h2 className="section-title">Transparente priser</h2>
-              <p className="section-description">
-                Vi tror på åpenhet. Her er våre startpriser for ulike typer løsninger. 
-                Kontakt oss for et skreddersydd tilbud tilpasset dine behov.
-              </p>
-            </div>
-
-            <div className="pricing-grid">
-              <div className="pricing-card animate-on-scroll fade-in-up-delay-1">
-                <div className="pricing-header">
-                  <h3>Enkel App</h3>
-                  <div className="price">
-                    <span className="price-amount">50.000,-</span>
-                    <span className="price-period">fra</span>
-                  </div>
-                </div>
-                <ul className="pricing-features">
-                  <li>✓ Grunnleggende funksjonalitet</li>
-                  <li>✓ Responsivt design</li>
-                  <li>✓ Brukervennlig interface</li>
-                  <li>✓ 3 måneders support</li>
-                  <li>✓ Grunnleggende sikkerhet</li>
-                  <li>✓ Deployment</li>
-                </ul>
-                <button className="pricing-cta" onClick={() => window.toggleContactPopup?.()}>
-                  Få tilbud
-                </button>
-              </div>
-
-              <div className="pricing-card featured animate-on-scroll fade-in-up-delay-2">
-                <div className="featured-badge">Mest populær</div>
-                <div className="pricing-header">
-                  <h3>Avansert App</h3>
-                  <div className="price">
-                    <span className="price-amount">150.000,-</span>
-                    <span className="price-period">fra</span>
-                  </div>
-                </div>
-                <ul className="pricing-features">
-                  <li>✓ Alt i Enkel App</li>
-                  <li>✓ Database-integrasjon</li>
-                  <li>✓ API-utvikling</li>
-                  <li>✓ Brukerautentisering</li>
-                  <li>✓ Admin-panel</li>
-                  <li>✓ 6 måneders support</li>
-                  <li>✓ Push-varsler</li>
-                  <li>✓ Analytics-integrasjon</li>
-                </ul>
-                <button className="pricing-cta primary" onClick={() => window.toggleContactPopup?.()}>
-                  Få tilbud
-                </button>
-              </div>
-
-              <div className="pricing-card animate-on-scroll fade-in-up-delay-3">
-                <div className="pricing-header">
-                  <h3>Enterprise-løsning</h3>
-                  <div className="price">
-                    <span className="price-amount">Tilpasset</span>
-                    <span className="price-period">pris</span>
-                  </div>
-                </div>
-                <ul className="pricing-features">
-                  <li>✓ Alt i Avansert App</li>
-                  <li>✓ Skreddersydd arkitektur</li>
-                  <li>✓ Skalerbar infrastruktur</li>
-                  <li>✓ Avansert sikkerhet</li>
-                  <li>✓ Dedikert support</li>
-                  <li>✓ SLA-garantier</li>
-                  <li>✓ Integrasjoner</li>
-                  <li>✓ Continuous deployment</li>
-                </ul>
-                <button className="pricing-cta" onClick={() => window.toggleContactPopup?.()}>
-                  Kontakt oss
-                </button>
-              </div>
-            </div>
-
-            <div className="pricing-note animate-on-scroll" style={{ marginTop: '3rem', textAlign: 'center' }}>
-              <p style={{ fontSize: '1rem', color: '#64748b', maxWidth: '600px', margin: '0 auto' }}>
-                <strong>Merk:</strong> Alle priser er startpriser og kan variere basert på kompleksitet, 
-                funksjonalitet og dine spesifikke behov. Kontakt oss for et nøyaktig tilbud.
-              </p>
             </div>
           </div>
         </section>
